@@ -13,7 +13,7 @@ export default function RecipesItem({ recipe }) {
             src={recipe.image}
             alt={recipe.name}
             width={400}
-            height={200}
+            height={250}
             className={styles.recipeImage}
           />
         )}

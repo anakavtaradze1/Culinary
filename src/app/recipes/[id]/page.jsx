@@ -34,16 +34,32 @@ export default function Recipepage() {
   }, [params.id]);
 
   if (loading) {
-    return <div className={styles.loading}>Loading recipe...</div>;
+    return (
+      <div className={styles.pageBackground}>
+        <div className={styles.loading}>Loading recipe...</div>
+      </div>
+    );
   }
 
   if (error) {
-    return <div className={styles.error}>Error loading recipe: {error}</div>;
+    return (
+      <div className={styles.pageBackground}>
+        <div className={styles.error}>Error loading recipe: {error}</div>
+      </div>
+    );
   }
 
   if (!recipe) {
-    return <div className={styles.notFound}>Recipe not found</div>;
+    return (
+      <div className={styles.pageBackground}>
+        <div className={styles.notFound}>Recipe not found</div>
+      </div>
+    );
   }
 
-  return <RecipesDetails details={recipe} />;
+  return (
+    <div className={styles.pageBackground}>
+      <RecipesDetails details={recipe} />
+    </div>
+  );
 }
