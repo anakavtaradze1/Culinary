@@ -1,6 +1,8 @@
 import Image from "next/image";
 import styles from "./recipesItem.module.css";
 import Link from "next/link";
+import { Clock, ChefHat } from "lucide-react";
+import { FaStar } from "react-icons/fa";
 
 export default function RecipesItem({ recipe }) {
   return (
@@ -22,12 +24,20 @@ export default function RecipesItem({ recipe }) {
           <div className={styles.recipeInfo}>
             <span className={styles.cuisine}>{recipe.cuisine}</span>
             <span className={styles.difficulty}>{recipe.difficulty}</span>
-            <span className={styles.rating}>⭐ {recipe.rating}</span>
+            <span className={styles.rating}>
+              <FaStar className={styles.starIcon} /> {recipe.rating}
+            </span>
           </div>
 
           <div className={styles.timeInfo}>
-            <span>🕐 Prep: {recipe.prepTimeMinutes}min</span>
-            <span>🍳 Cook: {recipe.cookTimeMinutes}min</span>
+            <span className={styles.timeItem}>
+              <Clock size={16} className={styles.timeIcon} /> Prep:{" "}
+              {recipe.prepTimeMinutes}min
+            </span>
+            <span className={styles.timeItem}>
+              <ChefHat size={17} className={styles.timeIcon} /> Cook:{" "}
+              {recipe.cookTimeMinutes}min
+            </span>
           </div>
 
           {recipe.tags && recipe.tags.length > 0 && (
