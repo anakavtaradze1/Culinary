@@ -15,6 +15,10 @@ export default function Recipes() {
   const itemsPerPage = 12;
 
   useEffect(() => {
+    document.title = `Recipes Explorer`;
+  }, []);
+
+  useEffect(() => {
     async function fetchData() {
       try {
         setLoading(true);

@@ -20,9 +20,11 @@ export default function Recipepage() {
         }
         const data = await res.json();
         setRecipe(data);
+        document.title = `${data.name}`;
       } catch (error) {
         console.error("Error fetching recipe:", error);
         setError(error.message);
+        document.title = "Recipe Not Found";
       } finally {
         setLoading(false);
       }

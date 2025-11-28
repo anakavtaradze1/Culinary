@@ -24,6 +24,14 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+button,
+input,
+a,
+select,
+textarea {
+  font-family: "Merriweather", serif;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
