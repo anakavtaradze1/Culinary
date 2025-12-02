@@ -1,22 +1,47 @@
 .pageBackground {
   min-height: 100vh;
-  background: rgb(249, 249, 249);
+  background: linear-gradient(135deg, #f5f7fa 0%, #dce0e8 100%);
+}
+
+.loadingContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 50vh;
+  gap: 2rem;
+}
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid #e3e3e3;
+  border-top: 4px solid #ff6b6b;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 .loading {
   text-align: center;
-  font-size: 1.2rem;
-  color: #666;
-  margin: 100px 0;
+  font-size: 1.3rem;
+  color: rgb(39, 38, 38);
+  font-weight: 500;
 }
 .error {
   text-align: center;
   font-size: 1.2rem;
-  color: #e74c3c;
-  margin: 100px 0;
+  color: rgb(39, 38, 38);
+  padding: 100px 0;
 }
 .notFound {
   text-align: center;
   font-size: 1.2rem;
-  color: #666;
-  margin: 100px 0;
+  color: rgb(39, 38, 38);
+  padding: 100px 0;
 }

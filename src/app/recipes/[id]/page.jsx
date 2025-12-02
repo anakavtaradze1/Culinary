@@ -38,7 +38,10 @@ export default function Recipepage() {
   if (loading) {
     return (
       <div className={styles.pageBackground}>
-        <div className={styles.loading}>Loading recipe...</div>
+        <div className={styles.loadingContainer}>
+          <div className={styles.spinner}></div>
+          <div className={styles.loading}>Loading recipe...</div>
+        </div>
       </div>
     );
   }
@@ -46,7 +49,9 @@ export default function Recipepage() {
   if (error) {
     return (
       <div className={styles.pageBackground}>
-        <div className={styles.error}>Error loading recipe: {error}</div>
+        <div className={styles.error}>
+          Failed to load recipe. Please try again.
+        </div>
       </div>
     );
   }

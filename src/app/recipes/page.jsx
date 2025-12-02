@@ -41,16 +41,21 @@ export default function Recipes() {
 
   if (loading) {
     return (
-      <div>
-        <div className={styles.loading}>Loading delicious recipes...</div>
+      <div className={styles.pageBackground}>
+        <div className={styles.loadingContainer}>
+          <div className={styles.spinner}></div>
+          <div className={styles.loading}>Loading delicious recipes...</div>
+        </div>
       </div>
     );
   }
 
   if (error) {
     return (
-      <div>
-        <div className={styles.error}>Error loading recipes: {error}</div>
+      <div className={styles.pageBackground}>
+        <div className={styles.error}>
+          Failed to load recipes. Please try again.
+        </div>
       </div>
     );
   }

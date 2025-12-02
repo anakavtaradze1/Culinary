@@ -241,17 +241,25 @@
     margin-bottom: 0.8rem;
   }
   .statNumber {
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
   .statsSection {
     padding: 20px 0;
   }
   .featureCard {
-    padding: 1.6rem 0.5rem;
+    padding: 1.2rem 0.5rem;
+  }
+  .featureIcon {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 0.8rem;
+  }
+  .featureTitle {
+    margin-bottom: 0.5rem;
   }
   .storyText p {
-    font-size: 1rem;
-    margin-bottom: 0.8rem;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
   }
   .ctaTitle {
     font-size: 1.8rem;
@@ -269,7 +277,7 @@
   }
   .featuresGrid {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    gap: 1rem;
   }
   .missionSection,
   .featuresSection,
