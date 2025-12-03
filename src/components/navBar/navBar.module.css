@@ -278,9 +278,6 @@
 }
 
 @media (max-width: 480px) {
-  .navContainer {
-    height: 60px;
-  }
   .navMenuMobile {
     top: 60px;
     padding: 1rem;

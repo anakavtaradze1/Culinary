@@ -2,14 +2,16 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { Search, Menu, X, Home, Heart, Info, Mail } from "lucide-react";
 import { FaUtensils } from "react-icons/fa";
 import styles from "./navBar.module.css";
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
   const pathname = usePathname();
+  const router = useRouter();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -17,6 +19,17 @@ const NavBar = () => {
 
   const closeMenu = () => {
     setIsOpen(false);
+  };
+
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      router.push(`/recipes?search=${encodeURIComponent(searchQuery.trim())}`);
+    }
+  };
+
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
   };
 
   const navItems = [
@@ -52,16 +65,18 @@ const NavBar = () => {
           })}
         </div>
 
-        <div className={styles.searchContainer}>
+        <form className={styles.searchContainer} onSubmit={handleSearchSubmit}>
           <input
             type="text"
             placeholder="Search recipes..."
+            value={searchQuery}
+            onChange={handleSearchChange}
             className={styles.searchInput}
           />
-          <button className={styles.searchButton}>
+          <button type="submit" className={styles.searchButton}>
             <Search size={18} className={styles.searchIcon} />
           </button>
-        </div>
+        </form>
 
         <div className={styles.navToggle} onClick={toggleMenu}>
           {isOpen ? (
@@ -89,16 +104,21 @@ const NavBar = () => {
             </Link>
           );
         })}
-        <div className={styles.searchContainerMobile}>
+        <form
+          className={styles.searchContainerMobile}
+          onSubmit={handleSearchSubmit}
+        >
           <input
             type="text"
             placeholder="Search recipes..."
+            value={searchQuery}
+            onChange={handleSearchChange}
             className={styles.searchInputMobile}
           />
-          <button className={styles.searchButtonMobile}>
+          <button type="submit" className={styles.searchButtonMobile}>
             <Search size={20} className={styles.searchIcon} />
           </button>
-        </div>
+        </form>
       </div>
     </nav>
   );
