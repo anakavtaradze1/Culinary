@@ -1,0 +1,476 @@
+.container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #dce0e8 100%);
+}
+.hero {
+  background: linear-gradient(135deg, #4d62be 0%, #764ba2 100%);
+  padding: 40px 0px 60px;
+  text-align: center;
+  color: white;
+  border-radius: 0 0 25px 25px;
+}
+.chefIcon {
+  width: 80px;
+  height: 80px;
+  color: white;
+  opacity: 0.9;
+  margin-bottom: 20px;
+}
+.title {
+  font-size: 3.2rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+.subtitle {
+  font-size: 1.3rem;
+  line-height: 1.6;
+  opacity: 0.95;
+  max-width: 600px;
+  margin: 0 auto;
+  font-weight: 300;
+  opacity: 0.9;
+}
+.content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 10px 50px 10px;
+}
+.tipsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 20px;
+  padding-top: 60px;
+  padding-bottom: 20px;
+}
+.tipCard {
+  background: white;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid #f0f0f0;
+}
+.tipCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+.tipCard h3 {
+  color: #667eea;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  letter-spacing: 0.8px;
+}
+.tipCard p {
+  color: #666;
+  line-height: 1.6;
+  font-size: 1rem;
+  margin-bottom: 15px;
+}
+.tipList {
+  list-style: none;
+}
+.tipList li {
+  color: #555;
+  font-size: 0.9rem;
+  padding: 5px 0;
+  padding-left: 20px;
+  position: relative;
+}
+.tipList li::before {
+  content: "✓";
+  color: #667eea;
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+}
+.extraSection {
+  margin: 60px 0;
+}
+.sectionTitle {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #333;
+  text-align: center;
+  margin-bottom: 40px;
+}
+.techniquesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  margin-bottom: 50px;
+}
+.techniqueCard {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 25px;
+  border-radius: 12px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+.techniqueCard:hover {
+  transform: translateY(-3px);
+}
+.techniqueCard h4 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.techniqueCard p {
+  font-size: 0.95rem;
+  opacity: 0.9;
+  line-height: 1.5;
+}
+.quickTipsSection {
+  padding: 40px 20px;
+  background: #f8f9fa;
+  border-radius: 15px;
+  margin-bottom: 50px;
+}
+.quickTips {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 15px;
+}
+.quickTip {
+  background: white;
+  padding: 15px 20px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.5;
+  border-left: 4px solid #667eea;
+  transition: transform 0.2s ease;
+}
+.quickTip:hover {
+  transform: translateX(5px);
+}
+.tipIcon {
+  color: #667eea;
+  margin-right: 8px;
+  font-size: 1.1rem;
+  vertical-align: middle;
+}
+.measurementsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+  margin-bottom: 40px;
+}
+.measurementCard {
+  background: white;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-left: 4px solid #667eea;
+}
+.measurementCard h4 {
+  color: #667eea;
+  font-size: 1.4rem;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+.conversionList {
+  list-style: none;
+  padding: 0;
+}
+.conversionList li {
+  padding: 8px 0;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 0.95rem;
+  color: #555;
+}
+.ingredientSubsSection {
+  margin: 60px 0px;
+  background: #f8f9fa;
+  padding: 40px 20px;
+  border-radius: 15px;
+}
+.subsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 30px;
+}
+.subsCard {
+  background: white;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.subsCard h4 {
+  color: #667eea;
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+.substitution {
+  margin-bottom: 15px;
+  padding: 10px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+.foodSafetySection {
+  margin: 60px 0px;
+}
+.safetyGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+}
+.safetyCard {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 25px;
+  border-radius: 12px;
+}
+.safetyCard h4 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+}
+.tempGuide,
+.storageGuide {
+  font-size: 0.95rem;
+}
+.tempItem {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+.tempFood {
+  font-weight: 600;
+}
+.tempValue {
+  font-weight: bold;
+  color: #fff;
+}
+.storageItem {
+  margin-bottom: 20px;
+}
+.storageItem ul {
+  list-style: none;
+  margin-top: 10px;
+}
+.storageItem li {
+  padding: 5px 0;
+  padding-left: 15px;
+  position: relative;
+}
+.storageItem li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #fff;
+}
+.seasoningGuideSection {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 40px 20px;
+  border-radius: 15px;
+  color: white;
+}
+.seasoningGuideSection .sectionTitle {
+  color: white;
+}
+.pairingGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+}
+.pairingCard {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.pairingCard h4 {
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+  font-weight: 600;
+  color: white;
+}
+.pairingList {
+  list-style: none;
+}
+.pairingList li {
+  padding: 8px 0;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.pairingList strong {
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+  }
+  .subtitle {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    padding: 0 15px;
+  }
+  .hero {
+    padding: 25px 15px 35px;
+  }
+  .chefIcon {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 15px;
+  }
+  .sectionTitle {
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+  }
+  .tipsGrid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    padding-top: 30px;
+    padding-bottom: 15px;
+  }
+  .tipCard {
+    padding: 20px;
+    margin: 0;
+  }
+  .tipCard h3 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+  }
+  .tipCard p {
+    font-size: 0.9rem;
+    margin-bottom: 12px;
+  }
+  .tipList li {
+    font-size: 0.85rem;
+    padding: 4px 0;
+    padding-left: 18px;
+    position: relative;
+  }
+  .tipList li::before {
+    content: "✓";
+    color: #667eea;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    top: 4px;
+  }
+  .extraSection {
+    margin: 40px 0;
+    padding: 0;
+  }
+  .techniquesGrid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    margin-bottom: 30px;
+  }
+  .techniqueCard {
+    padding: 20px;
+  }
+  .techniqueCard h4 {
+    font-size: 1rem;
+    margin-bottom: 8px;
+  }
+  .techniqueCard p {
+    font-size: 0.85rem;
+  }
+  .quickTipsSection {
+    padding: 25px 15px;
+    margin: 0 0 30px;
+  }
+  .quickTips {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .quickTip {
+    padding: 12px 15px;
+    font-size: 0.85rem;
+  }
+  .tipIcon {
+    font-size: 1rem;
+    margin-right: 6px;
+  }
+  .measurementsSection {
+    margin: 30px 0;
+    padding: 0 15px;
+  }
+  .measurementsGrid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    margin-bottom: 25px;
+  }
+  .measurementCard {
+    padding: 20px;
+  }
+  .measurementCard h4 {
+    font-size: 1rem;
+    margin-bottom: 10px;
+  }
+  .conversionList li {
+    padding: 6px 0;
+    font-size: 0.85rem;
+  }
+  .subsGrid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .subsCard {
+    padding: 20px;
+  }
+  .subsCard h4 {
+    font-size: 1rem;
+    margin-bottom: 12px;
+  }
+  .substitution {
+    margin-bottom: 12px;
+    padding: 8px;
+    font-size: 0.8rem;
+  }
+  .safetyGrid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .safetyCard {
+    padding: 20px;
+  }
+  .safetyCard h4 {
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+  }
+  .tempGuide,
+  .storageGuide {
+    font-size: 0.85rem;
+  }
+  .tempItem {
+    padding: 6px 0;
+  }
+  .storageItem {
+    margin-bottom: 15px;
+  }
+  .storageItem li {
+    padding: 3px 0;
+    font-size: 0.8rem;
+  }
+  .pairingGrid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  .pairingCard {
+    padding: 20px;
+  }
+  .pairingCard h4 {
+    font-size: 1rem;
+    margin-bottom: 10px;
+  }
+  .pairingList li {
+    padding: 6px 0;
+    font-size: 0.85rem;
+    line-height: 1.3;
+  }
+}

@@ -3,7 +3,16 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { Search, Menu, X, Home, Heart, Info, Mail } from "lucide-react";
+import {
+  Search,
+  Menu,
+  X,
+  Home,
+  Heart,
+  Info,
+  Mail,
+  Lightbulb,
+} from "lucide-react";
 import { FaUtensils } from "react-icons/fa";
 import styles from "./navBar.module.css";
 
@@ -34,6 +43,7 @@ const NavBar = () => {
 
   const navItems = [
     { href: "/recipes", label: "Recipes", icon: Home },
+    { href: "/tips", label: "Tips", icon: Lightbulb },
     { href: "/favorites", label: "Favorites", icon: Heart },
     { href: "/about", label: "About", icon: Info },
     { href: "/contact", label: "Contact", icon: Mail },
