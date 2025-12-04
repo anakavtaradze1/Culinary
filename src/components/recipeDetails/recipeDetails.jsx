@@ -1,6 +1,8 @@
 import styles from "./recipeDetails.module.css";
 import { useState } from "react";
 import Image from "next/image";
+import { useAppSelector, useAppDispatch } from "@/lib/hooks";
+import { addFavorite, removeFavorite } from "@/lib/slices/favoriteSlice";
 
 import {
   FaUtensils,
@@ -9,10 +11,21 @@ import {
   FaStarHalfAlt,
   FaRegStar,
 } from "react-icons/fa";
-import { Clock, ChefHat, Flame, Users, Timer } from "lucide-react";
+import { Clock, ChefHat, Flame, Users, Timer, Heart } from "lucide-react";
 
 export default function RecipesDetails({ details }) {
   const [activeTab, setActiveTab] = useState("ingredients");
+  const dispatch = useAppDispatch();
+  const favoriteItems = useAppSelector((state) => state.favorites.items);
+  const isFavorite = favoriteItems.some((item) => item.id === details.id);
+
+  const handleFavoriteToggle = () => {
+    if (isFavorite) {
+      dispatch(removeFavorite(details));
+    } else {
+      dispatch(addFavorite(details));
+    }
+  };
 
   const renderStars = (rating) => {
     const stars = [];
@@ -48,12 +61,29 @@ export default function RecipesDetails({ details }) {
         <div className={styles.heroContent}>
           <h1 className={styles.title}>{details.name}</h1>
 
-          <div className={styles.tags}>
-            {details.tags?.map((tag, index) => (
-              <span key={index} className={styles.tag}>
-                {tag}
+          <div className={styles.tagsSection}>
+            <div className={styles.tags}>
+              {details.tags?.map((tag, index) => (
+                <span key={index} className={styles.tag}>
+                  {tag}
+                </span>
+              ))}
+            </div>
+            <button
+              className={`${styles.favoriteBtn} ${
+                isFavorite ? styles.favoriteActive : ""
+              }`}
+              onClick={handleFavoriteToggle}
+            >
+              <Heart
+                size={18}
+                className={styles.heartIcon}
+                fill={isFavorite ? "currentColor" : "none"}
+              />
+              <span className={styles.favoriteText}>
+                {isFavorite ? "Favorited" : "Favorite"}
               </span>
-            ))}
+            </button>
           </div>
 
           <div className={styles.ratingSection}>

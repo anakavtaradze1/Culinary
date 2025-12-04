@@ -143,7 +143,7 @@ const Contact = () => {
     },
     {
       icon: MessageSquare,
-      name: "Twitter",
+      name: "LinkedIn",
       url: "#",
       followers: "8K",
     },

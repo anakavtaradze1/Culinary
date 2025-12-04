@@ -40,7 +40,7 @@ const Footer = () => {
             </span>
           </Link>
           <p className={styles.brandDescription}>
-            Discover amazing recipes from around the world. Cook, share, and
+            Discover amazing recipes from around the world. Cook, share and
             enjoy!
           </p>
         </div>

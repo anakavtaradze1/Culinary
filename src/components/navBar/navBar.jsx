@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
+import { useSelector } from "react-redux";
 import {
   Search,
   Menu,
@@ -21,6 +22,7 @@ const NavBar = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const pathname = usePathname();
   const router = useRouter();
+  const favoritesCount = useSelector((state) => state.favorites.items.length);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -60,6 +62,7 @@ const NavBar = () => {
         <div className={styles.navMenu}>
           {navItems.map((item) => {
             const IconComponent = item.icon;
+            const showCount = item.href === "/favorites" && favoritesCount > 0;
             return (
               <Link
                 key={item.href}
@@ -69,7 +72,14 @@ const NavBar = () => {
                 }`}
               >
                 <IconComponent size={18} className={styles.navItemIcon} />
-                <span>{item.label}</span>
+                <span>
+                  {item.label}
+                  {showCount && (
+                    <span className={styles.favoritesCount}>
+                      {favoritesCount}
+                    </span>
+                  )}
+                </span>
               </Link>
             );
           })}
@@ -100,6 +110,7 @@ const NavBar = () => {
       <div className={`${styles.navMenuMobile} ${isOpen ? styles.active : ""}`}>
         {navItems.map((item) => {
           const IconComponent = item.icon;
+          const showCount = item.href === "/favorites" && favoritesCount > 0;
           return (
             <Link
               key={item.href}
@@ -110,7 +121,14 @@ const NavBar = () => {
               onClick={closeMenu}
             >
               <IconComponent size={20} className={styles.navItemIconMobile} />
-              <span>{item.label}</span>
+              <span>
+                {item.label}
+                {showCount && (
+                  <span className={styles.favoritesCount}>
+                    {favoritesCount}
+                  </span>
+                )}
+              </span>
             </Link>
           );
         })}

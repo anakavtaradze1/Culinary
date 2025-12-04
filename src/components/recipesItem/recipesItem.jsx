@@ -1,21 +1,51 @@
 import Image from "next/image";
 import styles from "./recipesItem.module.css";
 import Link from "next/link";
-import { Clock, ChefHat } from "lucide-react";
+import { Clock, ChefHat, Heart } from "lucide-react";
 import { FaStar } from "react-icons/fa";
+import { useAppSelector, useAppDispatch } from "@/lib/hooks";
+import { addFavorite, removeFavorite } from "@/lib/slices/favoriteSlice";
 
 export default function RecipesItem({ recipe }) {
+  const dispatch = useAppDispatch();
+  const favoriteItems = useAppSelector((state) => state.favorites.items);
+  const isFavorite = favoriteItems.some((item) => item.id === recipe.id);
+
+  const handleFavoriteToggle = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    if (isFavorite) {
+      dispatch(removeFavorite(recipe));
+    } else {
+      dispatch(addFavorite(recipe));
+    }
+  };
+
   return (
     <Link href={`/recipes/${recipe.id}`}>
       <div className={styles.recipeCard}>
         {recipe.image && (
-          <Image
-            src={recipe.image}
-            alt={recipe.name}
-            width={400}
-            height={250}
-            className={styles.recipeImage}
-          />
+          <div className={styles.imageContainer}>
+            <Image
+              src={recipe.image}
+              alt={recipe.name}
+              width={400}
+              height={250}
+              className={styles.recipeImage}
+            />
+            <button
+              className={styles.favoriteBtn}
+              onClick={handleFavoriteToggle}
+              aria-label="Toggle favorite"
+            >
+              <Heart
+                size={20}
+                className={styles.heartIcon}
+                fill={isFavorite ? "currentColor" : "none"}
+              />
+            </button>
+          </div>
         )}
 
         <div className={styles.recipeContent}>
