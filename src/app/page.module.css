@@ -1,0 +1,592 @@
+.homePage {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #dce0e8 100%);
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+.heroSection {
+  padding: 60px 50px 80px;
+}
+.heroContent {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+.heroText {
+  max-width: 550px;
+}
+.heroLabel {
+  color: #718096;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+.heroTitle {
+  font-size: 3rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+  margin-top: 1rem;
+  line-height: 1;
+}
+.delicate {
+  font-weight: 600;
+  color: #667eea;
+}
+.heroSubtitle {
+  font-size: 1.2rem;
+  color: #5a6c7d;
+  line-height: 1.6;
+  margin-bottom: 2.5rem;
+  font-weight: 400;
+}
+.heroActions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+.exploreButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(102, 126, 234, 0.3);
+  border: none;
+  cursor: pointer;
+}
+.exploreButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(102, 126, 234, 0.4);
+}
+.learnButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(102, 126, 234, 0.3);
+  border: none;
+  cursor: pointer;
+}
+.learnButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(102, 126, 234, 0.4);
+}
+.heroImageContainer {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+.heroImage {
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  object-fit: cover;
+}
+.heroImage:hover {
+  transform: scale(1.02);
+}
+.floatingCard {
+  position: absolute;
+  top: 20px;
+  right: -20px;
+  background: white;
+  padding: 0.8rem 1.2rem;
+  border-radius: 25px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #667eea;
+  font-size: 0.9rem;
+  font-weight: 500;
+  backdrop-filter: blur(10px);
+}
+.sectionLabel {
+  color: #718096;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.sectionTitle {
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: #2c3e50;
+  margin: 1rem 0;
+  line-height: 1.2;
+}
+.sectionDescription {
+  font-size: 1.1rem;
+  color: #5a6c7d;
+  line-height: 1.6;
+}
+.inspirationsHeader {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+.inspirationsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+}
+.inspirationCard {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 2.5rem;
+  border-radius: 20px;
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+.inspirationCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+.inspirationIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  margin-bottom: 1.2rem;
+}
+.inspirationTitle {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+}
+.inspirationSubtitle {
+  font-size: 0.9rem;
+  color: #667eea;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+.inspirationDescription {
+  color: #5a6c7d;
+  line-height: 1.6;
+  margin-bottom: 1.3rem;
+}
+.inspirationLink {
+  color: #667eea;
+  font-weight: 500;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: opacity 0.3s ease;
+}
+.inspirationLink:hover {
+  opacity: 0.8;
+}
+.popularHeader {
+  text-align: center;
+  margin-bottom: 3rem;
+  margin-top: 4rem;
+}
+.popularGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+.popularCard {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+.popularCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+.popularImage {
+  position: relative;
+}
+.cardImage {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+.cardRating {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 0.3rem 0.8rem;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #667eea;
+}
+.popularInfo {
+  padding: 1.3rem;
+}
+.popularTitle {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 0.8rem;
+  line-height: 1.3;
+}
+.popularMeta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+  color: #5a6c7d;
+}
+.time {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-weight: 600;
+}
+.type {
+  background: #ebedec;
+  padding: 0.2rem 0.6rem;
+  border-radius: 10px;
+  font-weight: 600;
+}
+.newsletterSection {
+  padding: 5rem 0;
+}
+.newsletterCard {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 2rem;
+  border-radius: 20px;
+  text-align: center;
+  color: white;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.newsletterIcon {
+  margin-bottom: 1rem;
+  opacity: 0.9;
+}
+.newsletterTitle {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+.newsletterDescription {
+  font-size: 1rem;
+  opacity: 0.9;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+.newsletterForm {
+  display: flex;
+  gap: 1rem;
+  max-width: 400px;
+  margin: 0 auto;
+}
+.emailInput {
+  flex: 1;
+  padding: 0.8rem 1.2rem;
+  border: none;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+.emailInput::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+.emailInput:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.3);
+}
+.subscribeBtn {
+  background: white;
+  color: #667eea;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 25px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.subscribeBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
+}
+.ingredientsSection {
+  padding-top: 6rem;
+  padding-bottom: 4rem;
+}
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.ingredientsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+.ingredientCard {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 2rem;
+  border-radius: 20px;
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+.ingredientCard::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+.ingredientCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+.ingredientBadge {
+  display: inline-block;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 0.4rem 1rem;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+.ingredientName {
+  font-size: 1.3rem;
+  letter-spacing: 0.2rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 0.8rem;
+}
+.ingredientDescription {
+  color: #5a6c7d;
+  line-height: 1.6;
+}
+.tipsSection {
+  padding-top: 5rem;
+  border-radius: 25px;
+  margin: 2rem 0;
+}
+.tipsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+.tipCard {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 2rem;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+.tipCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+.tipIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  margin-bottom: 1rem;
+}
+.tipTitle {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 0.8rem;
+}
+.tipDescription {
+  color: #5a6c7d;
+  line-height: 1.6;
+}
+
+@media (max-width: 1024px) {
+  .heroContent {
+    gap: 1rem;
+  }
+  .heroImage {
+    width: 380px;
+    height: 350px;
+    object-fit: cover;
+  }
+  .inspirationsGrid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+  }
+  .inspirationCard {
+    padding: 1.2rem;
+  }
+  .popularGrid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+  }
+  .floatingCard {
+    display: none;
+  }
+  .exploreButton {
+    padding: 0.8rem 1rem;
+    font-size: 0.9rem;
+  }
+  .learnButton {
+    padding: 0.8rem 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .heroContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .heroImage {
+    display: none;
+  }
+  .heroSection {
+    padding: 20px 20px 40px;
+  }
+  .heroTitle {
+    font-size: 2.2rem;
+  }
+  .heroSubtitle {
+    font-size: 1rem;
+  }
+  .heroLabel {
+    font-size: 0.8rem;
+  }
+  .exploreButton {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
+  }
+  .learnButton {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
+  }
+  .sectionTitle {
+    font-size: 2rem;
+  }
+  .sectionDescription {
+    font-size: 1rem;
+  }
+  .inspirationsHeader {
+    margin-bottom: 2rem;
+  }
+  .inspirationsGrid {
+    grid-template-columns: 1fr;
+  }
+  .inspirationCard {
+    padding: 1.2rem;
+  }
+  .inspirationTitle {
+    font-size: 1.2rem;
+  }
+  .inspirationSubtitle {
+    font-size: 0.8rem;
+  }
+  .inspirationDescription {
+    font-size: 0.9rem;
+  }
+  .popularGrid {
+    grid-template-columns: 1fr;
+  }
+  .popularHeader {
+    margin-bottom: 2rem;
+  }
+  .popularTitle {
+    font-size: 1.1rem;
+  }
+  .newsletterForm {
+    flex-direction: column;
+  }
+  .newsletterTitle {
+    font-size: 1.5rem;
+  }
+  .newsletterDescription {
+    font-size: 0.9rem;
+  }
+  .container {
+    padding: 0 1rem;
+  }
+
+  .ingredientsGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .ingredientsSection {
+    padding-bottom: 1rem;
+    padding-top: 5rem;
+  }
+  .ingredientCard {
+    padding: 1.5rem;
+  }
+  .tipsGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .tipCard {
+    padding: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .tipsSection {
+    padding-top: 3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .heroActions {
+    flex-direction: column;
+    width: 100%;
+  }
+  .exploreButton,
+  .learnButton {
+    width: 100%;
+    justify-content: center;
+    padding: 0.6rem 0;
+  }
+  .heroSubtitle {
+    margin-bottom: 1.2rem;
+  }
+  .newsletterSection {
+    padding: 2.5rem 0;
+  }
+}

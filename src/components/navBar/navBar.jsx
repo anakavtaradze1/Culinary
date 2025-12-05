@@ -8,7 +8,7 @@ import {
   Search,
   Menu,
   X,
-  Home,
+  ChefHat,
   Heart,
   Info,
   Mail,
@@ -44,7 +44,7 @@ const NavBar = () => {
   };
 
   const navItems = [
-    { href: "/recipes", label: "Recipes", icon: Home },
+    { href: "/recipes", label: "Recipes", icon: ChefHat },
     { href: "/tips", label: "Tips", icon: Lightbulb },
     { href: "/favorites", label: "Favorites", icon: Heart },
     { href: "/about", label: "About", icon: Info },
@@ -54,7 +54,7 @@ const NavBar = () => {
   return (
     <nav className={styles.navbar}>
       <div className={styles.navContainer}>
-        <Link href="/recipes" className={styles.navLogo} onClick={closeMenu}>
+        <Link href="/" className={styles.navLogo} onClick={closeMenu}>
           <FaUtensils className={styles.logoIcon} />
           <span className={styles.logoText}>Culinary</span>
         </Link>
