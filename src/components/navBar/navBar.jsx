@@ -114,10 +114,10 @@ const NavBar = () => {
         <div className={styles.authSection}>
           {isLoggedIn ? (
             <div className={styles.userInfo}>
-              <span className={styles.userName}>
+              <Link href="/profile" className={styles.userName}>
                 <User size={16} className={styles.userIcon} />
                 {user?.firstName || user?.username}
-              </span>
+              </Link>
               <button onClick={handleLogout} className={styles.logoutBtn}>
                 <LogOut size={16} className={styles.logoutIcon} />
                 Logout
@@ -188,10 +188,14 @@ const NavBar = () => {
         <div className={styles.authSectionMobile}>
           {isLoggedIn ? (
             <>
-              <div className={styles.userInfoMobile}>
+              <Link
+                href="/profile"
+                className={styles.userInfoMobile}
+                onClick={closeMenu}
+              >
                 <User size={18} className={styles.userIcon} />
                 <span>{user?.firstName || user?.username}</span>
-              </div>
+              </Link>
               <button onClick={handleLogout} className={styles.logoutBtnMobile}>
                 <LogOut size={18} className={styles.logoutIcon} />
                 Logout

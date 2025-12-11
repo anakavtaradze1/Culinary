@@ -3,6 +3,10 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { useAppDispatch } from "@/lib/hooks";
+import { loginSuccess } from "@/lib/slices/authSlice";
+import { loadFavorites } from "@/lib/slices/favoriteSlice";
 import styles from "./page.module.css";
 import Link from "next/link";
 
@@ -40,6 +44,8 @@ const schema = yup.object().shape({
 function Register() {
   const [registerError, setRegisterError] = useState("");
   const [registerSuccess, setRegisterSuccess] = useState(false);
+  const router = useRouter();
+  const dispatch = useAppDispatch();
 
   const handleRegister = async (data) => {
     setRegisterError("");
@@ -63,6 +69,14 @@ function Register() {
       if (response.ok) {
         setRegisterSuccess(true);
         console.log("Registration successful:", result);
+
+        dispatch(loginSuccess(result));
+
+        dispatch(loadFavorites([]));
+
+        setTimeout(() => {
+          router.push("/");
+        }, 1500);
       } else {
         setRegisterError("Registration failed. Please try again.");
       }
@@ -91,7 +105,7 @@ function Register() {
 
         {registerSuccess && (
           <div className={styles.successMessage}>
-            Registration successful! Welcome aboard.
+            Registration successful! You&apos;re now logged in.
           </div>
         )}
 
