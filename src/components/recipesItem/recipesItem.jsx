@@ -1,24 +1,34 @@
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import styles from "./recipesItem.module.css";
 import Link from "next/link";
 import { Clock, ChefHat, Heart } from "lucide-react";
 import { FaStar } from "react-icons/fa";
 import { useAppSelector, useAppDispatch } from "@/lib/hooks";
 import { addFavorite, removeFavorite } from "@/lib/slices/favoriteSlice";
+import { setPendingFavorite } from "@/lib/slices/authSlice";
 
 export default function RecipesItem({ recipe }) {
   const dispatch = useAppDispatch();
+  const router = useRouter();
   const favoriteItems = useAppSelector((state) => state.favorites.items);
+  const { isLoggedIn, user } = useAppSelector((state) => state.auth);
   const isFavorite = favoriteItems.some((item) => item.id === recipe.id);
 
   const handleFavoriteToggle = (e) => {
     e.preventDefault();
     e.stopPropagation();
 
+    if (!isLoggedIn) {
+      dispatch(setPendingFavorite(recipe));
+      router.push("/login");
+      return;
+    }
+
     if (isFavorite) {
-      dispatch(removeFavorite(recipe));
+      dispatch(removeFavorite({ recipe, userId: user?.id }));
     } else {
-      dispatch(addFavorite(recipe));
+      dispatch(addFavorite({ recipe, userId: user?.id }));
     }
   };
 

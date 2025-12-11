@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import {
   Search,
   Menu,
@@ -13,8 +13,12 @@ import {
   Info,
   Mail,
   Lightbulb,
+  User,
+  LogOut,
 } from "lucide-react";
 import { FaUtensils } from "react-icons/fa";
+import { logout } from "@/lib/slices/authSlice";
+import { loadFavorites } from "@/lib/slices/favoriteSlice";
 import styles from "./navBar.module.css";
 
 const NavBar = () => {
@@ -22,7 +26,9 @@ const NavBar = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const pathname = usePathname();
   const router = useRouter();
+  const dispatch = useDispatch();
   const favoritesCount = useSelector((state) => state.favorites.items.length);
+  const { isLoggedIn, user } = useSelector((state) => state.auth);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -41,6 +47,13 @@ const NavBar = () => {
 
   const handleSearchChange = (e) => {
     setSearchQuery(e.target.value);
+  };
+
+  const handleLogout = () => {
+    dispatch(logout());
+    dispatch(loadFavorites([]));
+    closeMenu();
+    router.push("/");
   };
 
   const navItems = [
@@ -98,6 +111,30 @@ const NavBar = () => {
           </button>
         </form>
 
+        <div className={styles.authSection}>
+          {isLoggedIn ? (
+            <div className={styles.userInfo}>
+              <span className={styles.userName}>
+                <User size={16} className={styles.userIcon} />
+                {user?.firstName || user?.username}
+              </span>
+              <button onClick={handleLogout} className={styles.logoutBtn}>
+                <LogOut size={16} className={styles.logoutIcon} />
+                Logout
+              </button>
+            </div>
+          ) : (
+            <div className={styles.authLinks}>
+              <Link href="/login" className={styles.authLink}>
+                Login
+              </Link>
+              <Link href="/register" className={styles.authLink}>
+                Register
+              </Link>
+            </div>
+          )}
+        </div>
+
         <div className={styles.navToggle} onClick={toggleMenu}>
           {isOpen ? (
             <X size={24} className={styles.toggleIcon} />
@@ -147,6 +184,38 @@ const NavBar = () => {
             <Search size={20} className={styles.searchIcon} />
           </button>
         </form>
+
+        <div className={styles.authSectionMobile}>
+          {isLoggedIn ? (
+            <>
+              <div className={styles.userInfoMobile}>
+                <User size={18} className={styles.userIcon} />
+                <span>{user?.firstName || user?.username}</span>
+              </div>
+              <button onClick={handleLogout} className={styles.logoutBtnMobile}>
+                <LogOut size={18} className={styles.logoutIcon} />
+                Logout
+              </button>
+            </>
+          ) : (
+            <div className={styles.authLinksMobile}>
+              <Link
+                href="/login"
+                className={styles.authLinkMobile}
+                onClick={closeMenu}
+              >
+                Login
+              </Link>
+              <Link
+                href="/register"
+                className={styles.authLinkMobile}
+                onClick={closeMenu}
+              >
+                Register
+              </Link>
+            </div>
+          )}
+        </div>
       </div>
     </nav>
   );

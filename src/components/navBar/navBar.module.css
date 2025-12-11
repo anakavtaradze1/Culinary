@@ -141,7 +141,6 @@
   opacity: 0.7;
   color: #4a5568;
 }
-
 .navToggle {
   display: none;
   flex-direction: column;
@@ -235,8 +234,139 @@
 .searchButtonMobile:hover {
   background: rgba(102, 126, 234, 0.1);
 }
+.authSection {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.userInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+}
+.userName {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  color: #4a5568;
+  font-weight: 600;
+  font-size: 0.8rem;
+  padding: 0.3rem 0.5rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  background: rgba(102, 126, 234, 0.05);
+  min-width: 70px;
+  text-align: center;
+}
+.userIcon {
+  color: #667eea;
+}
+.logoutBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  background: rgba(102, 126, 234, 0.05);
+  border: 1px solid #e2e8f0;
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  color: #4a5568;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.8rem;
+  min-width: 70px;
+  text-align: center;
+}
+.logoutBtn:hover {
+  background: #f7fafc;
+  border-color: #cbd5e0;
+  color: #2d3748;
+}
+.logoutIcon {
+  color: #e53e3e;
+}
+.authLinks {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+}
+.authLink {
+  color: #4a5568;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+  transition: all 0.3s ease;
+  font-size: 0.8rem;
+  min-width: 70px;
+  text-align: center;
+}
+.authLink:hover {
+  color: #667eea;
+  background: rgba(102, 126, 234, 0.1);
+  border-color: rgba(102, 126, 234, 0.4);
+}
+.authSectionMobile {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+.userInfoMobile {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  color: #4a5568;
+  font-weight: 600;
+  font-size: 1rem;
+}
+.logoutBtnMobile {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  background: none;
+  border: 1px solid #e2e8f0;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  color: #4a5568;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+.logoutBtnMobile:hover {
+  background: #f7fafc;
+  border-color: #cbd5e0;
+}
+.authLinksMobile {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.authLinkMobile {
+  color: #4a5568;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  text-align: center;
+  border: 1px solid #e2e8f0;
+  font-size: 1rem;
+}
+.authLinkMobile:hover {
+  color: #667eea;
+  background: rgba(102, 126, 234, 0.1);
+  border-color: #667eea;
+}
 
-@media (max-width: 1024px) {
+@media (max-width: 1200px) {
   .navContainer {
     padding: 0 1rem;
   }
@@ -251,7 +381,7 @@
     font-size: 1.25rem;
   }
   .searchInput {
-    width: 180px;
+    width: 160px;
     padding: 0.6rem 0.8rem;
     padding-right: 2.8rem;
     font-size: 0.9rem;
@@ -259,10 +389,34 @@
   .searchButton {
     right: 8px;
   }
+  .authLinks {
+    gap: 0.25rem;
+  }
+  .authLink {
+    padding: 0.3rem 0.5rem;
+    font-size: 0.7rem;
+    min-width: 60px;
+  }
+  .userName {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.4rem;
+    min-width: 60px;
+  }
+  .logoutBtn {
+    padding: 0.3rem 0.5rem;
+    font-size: 0.7rem;
+    min-width: 60px;
+  }
+  .navMenu {
+    gap: 0.1rem;
+  }
 }
 
 @media (max-width: 768px) {
   .searchContainer {
+    display: none;
+  }
+  .authSection {
     display: none;
   }
   .navContainer {

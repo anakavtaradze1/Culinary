@@ -1,8 +1,10 @@
 import styles from "./recipeDetails.module.css";
 import { useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { useAppSelector, useAppDispatch } from "@/lib/hooks";
 import { addFavorite, removeFavorite } from "@/lib/slices/favoriteSlice";
+import { setPendingFavorite } from "@/lib/slices/authSlice";
 
 import {
   FaUtensils,
@@ -16,14 +18,22 @@ import { Clock, ChefHat, Flame, Users, Timer, Heart } from "lucide-react";
 export default function RecipesDetails({ details }) {
   const [activeTab, setActiveTab] = useState("ingredients");
   const dispatch = useAppDispatch();
+  const router = useRouter();
   const favoriteItems = useAppSelector((state) => state.favorites.items);
+  const { isLoggedIn, user } = useAppSelector((state) => state.auth);
   const isFavorite = favoriteItems.some((item) => item.id === details.id);
 
   const handleFavoriteToggle = () => {
+    if (!isLoggedIn) {
+      dispatch(setPendingFavorite(details));
+      router.push("/login");
+      return;
+    }
+
     if (isFavorite) {
-      dispatch(removeFavorite(details));
+      dispatch(removeFavorite({ recipe: details, userId: user?.id }));
     } else {
-      dispatch(addFavorite(details));
+      dispatch(addFavorite({ recipe: details, userId: user?.id }));
     }
   };
 
