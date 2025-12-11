@@ -18,6 +18,13 @@ export const favoriteSlice = createSlice({
         console.error("Invalid recipe data in addFavorite:", action.payload);
         return;
       }
+
+      const existingRecipe = state.items.find((item) => item.id === recipe.id);
+      if (existingRecipe) {
+        console.log("Recipe already in favorites:", recipe.name);
+        return;
+      }
+
       state.items.push(recipe);
       if (
         typeof window !== "undefined" &&
