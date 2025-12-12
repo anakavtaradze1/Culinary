@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, Heart, Info, Mail } from "lucide-react";
+import { Home, Heart, Info, Mail, Lightbulb } from "lucide-react";
 import {
   FaUtensils,
   FaGithub,
@@ -17,6 +17,7 @@ const Footer = () => {
 
   const navItems = [
     { href: "/recipes", label: "Recipes", icon: Home },
+    { href: "/tips", label: "Tips", icon: Lightbulb },
     { href: "/favorites", label: "Favorites", icon: Heart },
     { href: "/about", label: "About", icon: Info },
     { href: "/contact", label: "Contact", icon: Mail },

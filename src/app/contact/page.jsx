@@ -11,10 +11,6 @@ import {
   Clock,
   Send,
   MessageCircle,
-  Globe,
-  Share2,
-  MessageSquare,
-  Video,
   Calendar,
   Star,
   Headphones,
@@ -24,6 +20,7 @@ import {
   Users,
   AlertCircle,
 } from "lucide-react";
+import { FaInstagram, FaFacebook, FaLinkedin, FaYoutube } from "react-icons/fa";
 import styles from "./page.module.css";
 import Link from "next/link";
 
@@ -130,27 +127,27 @@ const Contact = () => {
 
   const socialLinks = [
     {
-      icon: Globe,
+      icon: FaInstagram,
       name: "Instagram",
-      url: "#",
+      url: "https://www.instagram.com",
       followers: "25K",
     },
     {
-      icon: Share2,
+      icon: FaFacebook,
       name: "Facebook",
-      url: "#",
+      url: "https://www.facebook.com",
       followers: "15K",
     },
     {
-      icon: MessageSquare,
+      icon: FaLinkedin,
       name: "LinkedIn",
-      url: "#",
+      url: "https://www.linkedin.com",
       followers: "8K",
     },
     {
-      icon: Video,
+      icon: FaYoutube,
       name: "YouTube",
-      url: "#",
+      url: "https://www.youtube.com",
       followers: "50K",
     },
   ];
@@ -451,7 +448,12 @@ const Contact = () => {
             {socialLinks.map((social, index) => {
               const IconComponent = social.icon;
               return (
-                <a key={index} href={social.url} className={styles.socialCard}>
+                <a
+                  key={index}
+                  href={social.url}
+                  className={styles.socialCard}
+                  target="_blank"
+                >
                   <div className={styles.socialIcon}>
                     <IconComponent size={28} />
                   </div>

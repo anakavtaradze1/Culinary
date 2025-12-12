@@ -459,6 +459,12 @@ export default function Recipes() {
                   <option value="american">American</option>
                   <option value="mexican">Mexican</option>
                   <option value="mediterranean">Mediterranean</option>
+                  <option value="turkish">Turkish</option>
+                  <option value="thai">Thai</option>
+                  <option value="japanese">Japanese</option>
+                  <option value="greek">Greek</option>
+                  <option value="moroccan">Moroccan</option>
+                  <option value="brazilian">Brazilian</option>
                 </select>
               </div>
             </div>
