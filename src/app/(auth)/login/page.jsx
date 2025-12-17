@@ -2,7 +2,7 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { loginSuccess, clearPendingFavorite } from "@/lib/slices/authSlice";
@@ -31,6 +31,10 @@ function Login() {
   const [loginError, setLoginError] = useState("");
   const [isLoginSuccessful, setIsLoginSuccessful] = useState(false);
   const router = useRouter();
+
+  useEffect(() => {
+    document.title = "Login - Culinary Delights";
+  }, []);
   const searchParams = useSearchParams();
   const dispatch = useAppDispatch();
   const pendingFavorite = useAppSelector((state) => state.auth.pendingFavorite);

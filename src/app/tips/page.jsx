@@ -1,3 +1,5 @@
+"use client";
+import { useEffect } from "react";
 import styles from "./page.module.css";
 import { IoRestaurantOutline } from "react-icons/io5";
 import {
@@ -12,6 +14,10 @@ import { FaUserTie, FaCut } from "react-icons/fa";
 import { GiMeat, GiTongue } from "react-icons/gi";
 
 export default function Tips() {
+  useEffect(() => {
+    document.title = "Kitchen Tips & Techniques - Culinary Delights";
+  }, []);
+
   return (
     <div className={styles.container}>
       <div className={styles.hero}>

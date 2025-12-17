@@ -12,10 +12,10 @@ import {
   Leaf,
   Sun,
   Coffee,
+  Calendar,
 } from "lucide-react";
 import styles from "./page.module.css";
 import foodImage from "./assets/food3.jpg";
-
 
 export default function Home() {
   const [popularRecipes, setPopularRecipes] = useState([]);
@@ -126,7 +126,7 @@ export default function Home() {
                 Explore Recipes
                 <ArrowRight size={18} />
               </Link>
-              <Link href="#inspirations" className={styles.learnButton}>
+              <Link href="#inspirations" className={styles.exploreButton}>
                 Find Inspiration
               </Link>
             </div>
@@ -143,6 +143,66 @@ export default function Home() {
             <div className={styles.floatingCard}>
               <Sparkles size={16} />
               <span>Handcrafted with love</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className={styles.mealPlannerFeature}>
+        <div className={styles.container}>
+          <div className={styles.featureContent}>
+            <div className={styles.featureText}>
+              <span className={styles.sectionLabel}>New Feature</span>
+              <h2 className={styles.featureTitle}>Smart Meal Planning</h2>
+              <p className={styles.featureDescription}>
+                Plan your entire week with our intelligent meal planner.
+                Organize your meals by day and meal type, and never wonder
+                &quot;what&apos;s for dinner?&quot; again.
+              </p>
+              <div className={styles.featurePoints}>
+                <div className={styles.featurePoint}>
+                  <Calendar size={20} />
+                  <span>Weekly meal organization</span>
+                </div>
+                <div className={styles.featurePoint}>
+                  <BookOpen size={20} />
+                  <span>Smart recipe suggestions</span>
+                </div>
+                <div className={styles.featurePoint}>
+                  <Clock size={20} />
+                  <span>Time-saving meal organization</span>
+                </div>
+              </div>
+              <Link href="/meal-planner" className={styles.featureButton}>
+                Start Planning Now
+                <ArrowRight size={18} />
+              </Link>
+            </div>
+            <div className={styles.featureVisual}>
+              <div className={styles.plannerPreview}>
+                <div className={styles.previewHeader}>
+                  <Calendar size={16} />
+                  <span>This Week&apos;s Plan</span>
+                </div>
+                <div className={styles.previewGrid}>
+                  <div className={styles.previewDay}>
+                    <span>Mon</span>
+                    <div className={styles.previewMeal}></div>
+                  </div>
+                  <div className={styles.previewDay}>
+                    <span>Tue</span>
+                    <div className={styles.previewMeal}></div>
+                  </div>
+                  <div className={styles.previewDay}>
+                    <span>Wed</span>
+                    <div className={styles.previewMeal}></div>
+                  </div>
+                  <div className={styles.previewDay}>
+                    <span>Thu</span>
+                    <div className={styles.previewMeal}></div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

@@ -2,7 +2,7 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useAppDispatch } from "@/lib/hooks";
 import { loginSuccess } from "@/lib/slices/authSlice";
@@ -45,6 +45,10 @@ function Register() {
   const [registerError, setRegisterError] = useState("");
   const [registerSuccess, setRegisterSuccess] = useState(false);
   const router = useRouter();
+
+  useEffect(() => {
+    document.title = "Register - Culinary Delights";
+  }, []);
   const dispatch = useAppDispatch();
 
   const handleRegister = async (data) => {

@@ -9,6 +9,10 @@ export default function Profile() {
   const router = useRouter();
 
   useEffect(() => {
+    document.title = "My Profile - Culinary Delights";
+  }, []);
+
+  useEffect(() => {
     if (!isLoggedIn) {
       router.push("/login?redirect=/profile");
     }

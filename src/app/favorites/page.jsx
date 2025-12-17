@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import { useAppSelector, useAppDispatch } from "@/lib/hooks";
 import { removeFavorite } from "@/lib/slices/favoriteSlice";
 import ProtectedRoute from "@/components/ProtectedRoute/ProtectedRoute";
@@ -13,6 +14,10 @@ function FavoritesPage() {
   const dispatch = useAppDispatch();
   const favoriteItems = useAppSelector((state) => state.favorites.items);
   const user = useAppSelector((state) => state.auth.user);
+
+  useEffect(() => {
+    document.title = "My Favorites - Culinary Delights";
+  }, []);
 
   const handleRemoveFavorite = (recipe) => {
     dispatch(removeFavorite({ recipe, userId: user?.id }));
