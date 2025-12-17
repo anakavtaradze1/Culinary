@@ -94,6 +94,11 @@
   font-weight: 600;
   flex-shrink: 0;
 }
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
 .advancedFilterContainer {
   display: flex;
   align-items: center;

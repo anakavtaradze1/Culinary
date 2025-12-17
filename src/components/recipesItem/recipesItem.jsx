@@ -2,11 +2,12 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import styles from "./recipesItem.module.css";
 import Link from "next/link";
-import { Clock, ChefHat, Heart } from "lucide-react";
+import { Clock, ChefHat, Heart, Trash2 } from "lucide-react";
 import { FaStar } from "react-icons/fa";
 import { useAppSelector, useAppDispatch } from "@/lib/hooks";
 import { addFavorite, removeFavorite } from "@/lib/slices/favoriteSlice";
 import { setPendingFavorite } from "@/lib/slices/authSlice";
+import { removeRecipe } from "@/lib/slices/userRecipesSlice";
 
 export default function RecipesItem({ recipe }) {
   const dispatch = useAppDispatch();
@@ -14,6 +15,9 @@ export default function RecipesItem({ recipe }) {
   const favoriteItems = useAppSelector((state) => state.favorites.items);
   const { isLoggedIn, user } = useAppSelector((state) => state.auth);
   const isFavorite = favoriteItems.some((item) => item.id === recipe.id);
+
+  const isOwner =
+    recipe.isUserGenerated && recipe.createdBy === (user?.id || user?.email);
 
   const handleFavoriteToggle = (e) => {
     e.preventDefault();
@@ -32,11 +36,24 @@ export default function RecipesItem({ recipe }) {
     }
   };
 
+  const handleDeleteRecipe = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    if (
+      window.confirm(
+        `Are you sure you want to delete "${recipe.name}"? This action cannot be undone.`
+      )
+    ) {
+      dispatch(removeRecipe(recipe.id));
+    }
+  };
+
   return (
     <Link href={`/recipes/${recipe.id}`}>
       <div className={styles.recipeCard}>
-        {recipe.image && (
-          <div className={styles.imageContainer}>
+        <div className={styles.imageContainer}>
+          {recipe.image ? (
             <Image
               src={recipe.image}
               alt={recipe.name}
@@ -44,25 +61,41 @@ export default function RecipesItem({ recipe }) {
               height={250}
               className={styles.recipeImage}
             />
+          ) : (
+            <div className={styles.noImagePlaceholder}>
+              <ChefHat size={60} className={styles.placeholderIcon} />
+              <span className={styles.placeholderText}>{recipe.name}</span>
+            </div>
+          )}
+          {isOwner && (
             <button
-              className={styles.favoriteBtn}
-              onClick={handleFavoriteToggle}
-              aria-label="Toggle favorite"
+              className={styles.deleteBtn}
+              onClick={handleDeleteRecipe}
+              aria-label="Delete recipe"
             >
-              <Heart
-                size={20}
-                className={styles.heartIcon}
-                fill={isFavorite ? "currentColor" : "none"}
-              />
+              <Trash2 size={18} className={styles.deleteIcon} />
             </button>
-          </div>
-        )}
+          )}
+          <button
+            className={styles.favoriteBtn}
+            onClick={handleFavoriteToggle}
+            aria-label="Toggle favorite"
+          >
+            <Heart
+              size={20}
+              className={styles.heartIcon}
+              fill={isFavorite ? "currentColor" : "none"}
+            />
+          </button>
+        </div>
 
         <div className={styles.recipeContent}>
           <h3 className={styles.recipeName}>{recipe.name}</h3>
 
           <div className={styles.recipeInfo}>
-            <span className={styles.cuisine}>{recipe.cuisine}</span>
+            {recipe.cuisine && (
+              <span className={styles.cuisine}>{recipe.cuisine}</span>
+            )}
             <span className={styles.difficulty}>{recipe.difficulty}</span>
             <span className={styles.rating}>
               <FaStar className={styles.starIcon} /> {recipe.rating}

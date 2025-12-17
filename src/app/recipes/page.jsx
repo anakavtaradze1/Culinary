@@ -2,16 +2,25 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
+import { useDispatch, useSelector } from "react-redux";
 import RecipesItem from "../../components/recipesItem/recipesItem";
+import AddRecipeModal from "../../components/addRecipeModal/addRecipeModal";
+import { loadUserRecipesFromStorage } from "../../lib/slices/userRecipesSlice";
 import styles from "./page.module.css";
 import foodImage from "../assets/food.jpg";
-import { Clock, BarChart3, Star, Utensils, MapPin } from "lucide-react";
+import { Clock, BarChart3, Star, Utensils, MapPin, Plus } from "lucide-react";
 
 export default function Recipes() {
+  const dispatch = useDispatch();
+  const router = useRouter();
+  const { userRecipes } = useSelector((state) => state.userRecipes);
+  const { isLoggedIn } = useSelector((state) => state.auth);
+
   const [allRecipes, setAllRecipes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [showAddRecipeModal, setShowAddRecipeModal] = useState(false);
   const searchParams = useSearchParams();
   const searchQuery = searchParams.get("search") || "";
   const [currentPage, setCurrentPage] = useState(
@@ -30,6 +39,29 @@ export default function Recipes() {
   useEffect(() => {
     document.title = `Recipes Explorer`;
   }, []);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      try {
+        const savedRecipes = localStorage.getItem("userRecipes");
+        if (savedRecipes) {
+          dispatch(loadUserRecipesFromStorage(JSON.parse(savedRecipes)));
+        }
+      } catch (error) {
+        console.error("Error loading user recipes from localStorage:", error);
+      }
+    }
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (isLoggedIn && typeof window !== "undefined") {
+      const redirectIntent = sessionStorage.getItem("redirectIntent");
+      if (redirectIntent === "addRecipe") {
+        sessionStorage.removeItem("redirectIntent");
+        setShowAddRecipeModal(true);
+      }
+    }
+  }, [isLoggedIn]);
 
   useEffect(() => {
     setCurrentPage(1);
@@ -132,6 +164,8 @@ export default function Recipes() {
     setCurrentPage(1);
   };
 
+  const combinedRecipes = [...userRecipes, ...allRecipes];
+
   const applyFilters = (recipes) => {
     if (!recipes || recipes.length === 0) return [];
 
@@ -196,13 +230,10 @@ export default function Recipes() {
           case "average":
             if (rating >= 4.0) return false;
             break;
-          default:
-            return false;
         }
       }
 
       if (filters.mealType !== "all") {
-        const recipeName = (recipe.name || "").toLowerCase();
         const tags = recipe.tags || [];
         const mealType = recipe.mealType || [];
 
@@ -249,43 +280,6 @@ export default function Recipes() {
           });
         }
 
-        if (!mealTypeMatch) {
-          switch (filters.mealType) {
-            case "breakfast":
-              mealTypeMatch =
-                recipeName.includes("pancake") ||
-                recipeName.includes("waffle") ||
-                recipeName.includes("omelette") ||
-                recipeName.includes("cereal") ||
-                recipeName.includes("toast");
-              break;
-            case "lunch":
-              mealTypeMatch =
-                recipeName.includes("salad") ||
-                recipeName.includes("sandwich") ||
-                recipeName.includes("wrap") ||
-                recipeName.includes("soup");
-              break;
-            case "dinner":
-              mealTypeMatch =
-                recipeName.includes("pasta") ||
-                recipeName.includes("steak") ||
-                recipeName.includes("chicken") ||
-                recipeName.includes("fish") ||
-                recipeName.includes("rice") ||
-                recipeName.includes("curry");
-              break;
-            case "dessert":
-              mealTypeMatch =
-                recipeName.includes("cake") ||
-                recipeName.includes("cookie") ||
-                recipeName.includes("chocolate") ||
-                recipeName.includes("ice cream") ||
-                recipeName.includes("pudding");
-              break;
-          }
-        }
-
         if (!mealTypeMatch) return false;
       }
 
@@ -301,7 +295,7 @@ export default function Recipes() {
     });
   };
 
-  const filteredRecipes = applyFilters(allRecipes);
+  const filteredRecipes = applyFilters(combinedRecipes);
   const totalRecipes = filteredRecipes.length;
   const totalPages = Math.ceil(totalRecipes / itemsPerPage);
 
@@ -338,30 +332,54 @@ export default function Recipes() {
             What to <span className={styles.culinary}>Cook</span>?
           </h1>
 
-          <div className={styles.advancedFilterContainer}>
+          <div className={styles.headerActions}>
             <button
               className={styles.filterToggle}
-              onClick={() => setShowFilters(!showFilters)}
+              onClick={() => {
+                if (isLoggedIn) {
+                  setShowAddRecipeModal(true);
+                } else {
+                  if (typeof window !== "undefined") {
+                    sessionStorage.setItem("redirectIntent", "addRecipe");
+                  }
+                  router.push("/login");
+                }
+              }}
             >
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-              >
-                <path d="M4.25 5.61C6.27 8.2 10 13 10 13v6c0 .55.45 1 1 1h2c.55 0 1-.45 1-1v-6s3.73-4.8 5.75-7.39c.51-.66.04-1.61-.79-1.61H5.04c-.83 0-1.3.95-.79 1.61z" />
-              </svg>
-              Advanced Filters
-              {activeFiltersCount > 0 && (
-                <span className={styles.filterBadge}>{activeFiltersCount}</span>
-              )}
+              <Plus size={20} />
+              Add Recipe
             </button>
 
-            {activeFiltersCount > 0 && (
-              <button className={styles.clearFilters} onClick={clearAllFilters}>
-                Clear All
+            <div className={styles.advancedFilterContainer}>
+              <button
+                className={styles.filterToggle}
+                onClick={() => setShowFilters(!showFilters)}
+              >
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path d="M4.25 5.61C6.27 8.2 10 13 10 13v6c0 .55.45 1 1 1h2c.55 0 1-.45 1-1v-6s3.73-4.8 5.75-7.39c.51-.66.04-1.61-.79-1.61H5.04c-.83 0-1.3.95-.79 1.61z" />
+                </svg>
+                Advanced Filters
+                {activeFiltersCount > 0 && (
+                  <span className={styles.filterBadge}>
+                    {activeFiltersCount}
+                  </span>
+                )}
               </button>
-            )}
+
+              {activeFiltersCount > 0 && (
+                <button
+                  className={styles.clearFilters}
+                  onClick={clearAllFilters}
+                >
+                  Clear All
+                </button>
+              )}
+            </div>
           </div>
         </div>
 
@@ -469,10 +487,10 @@ export default function Recipes() {
               </div>
             </div>
 
-            {(filteredRecipes.length !== allRecipes.length ||
+            {(filteredRecipes.length !== combinedRecipes.length ||
               activeFiltersCount > 0) && (
               <div className={styles.filterResults}>
-                Showing {totalRecipes} of {allRecipes.length} recipes
+                Showing {totalRecipes} of {combinedRecipes.length} recipes
                 {activeFiltersCount > 0 &&
                   ` (${activeFiltersCount} filter${
                     activeFiltersCount > 1 ? "s" : ""
@@ -523,6 +541,11 @@ export default function Recipes() {
             </button>
           </div>
         )}
+
+        <AddRecipeModal
+          isOpen={showAddRecipeModal}
+          onClose={() => setShowAddRecipeModal(false)}
+        />
       </div>
     </div>
   );

@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
+import { useSelector } from "react-redux";
 import RecipesDetails from "../../../components/recipeDetails/recipeDetails";
 import styles from "./page.module.css";
 
@@ -9,11 +10,24 @@ export default function Recipepage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const params = useParams();
+  const { userRecipes } = useSelector((state) => state.userRecipes);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         setLoading(true);
+
+        const userRecipe = userRecipes.find(
+          (recipe) => recipe.id.toString() === params.id
+        );
+
+        if (userRecipe) {
+          setRecipe(userRecipe);
+          document.title = `${userRecipe.name}`;
+          setLoading(false);
+          return;
+        }
+
         const res = await fetch(`https://dummyjson.com/recipes/${params.id}`);
         if (!res.ok) {
           throw new Error(`HTTP error! status: ${res.status}`);
@@ -30,10 +44,30 @@ export default function Recipepage() {
       }
     };
 
+    if (typeof window !== "undefined" && userRecipes.length === 0) {
+      try {
+        const savedRecipes = localStorage.getItem("userRecipes");
+        if (savedRecipes) {
+          const parsedRecipes = JSON.parse(savedRecipes);
+          const userRecipe = parsedRecipes.find(
+            (recipe) => recipe.id.toString() === params.id
+          );
+          if (userRecipe) {
+            setRecipe(userRecipe);
+            document.title = `${userRecipe.name}`;
+            setLoading(false);
+            return;
+          }
+        }
+      } catch (error) {
+        console.error("Error loading user recipes from localStorage:", error);
+      }
+    }
+
     if (params.id) {
       fetchData();
     }
-  }, [params.id]);
+  }, [params.id, userRecipes]);
 
   if (loading) {
     return (

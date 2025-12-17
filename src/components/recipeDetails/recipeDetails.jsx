@@ -13,7 +13,16 @@ import {
   FaStarHalfAlt,
   FaRegStar,
 } from "react-icons/fa";
-import { Clock, ChefHat, Flame, Users, Timer, Heart } from "lucide-react";
+import {
+  Clock,
+  ChefHat,
+  Flame,
+  Users,
+  Timer,
+  Heart,
+  Trash2,
+} from "lucide-react";
+import { removeRecipe } from "@/lib/slices/userRecipesSlice";
 
 export default function RecipesDetails({ details }) {
   const [activeTab, setActiveTab] = useState("ingredients");
@@ -22,6 +31,9 @@ export default function RecipesDetails({ details }) {
   const favoriteItems = useAppSelector((state) => state.favorites.items);
   const { isLoggedIn, user } = useAppSelector((state) => state.auth);
   const isFavorite = favoriteItems.some((item) => item.id === details.id);
+
+  const isOwner =
+    details.isUserGenerated && details.createdBy === (user?.id || user?.email);
 
   const handleFavoriteToggle = () => {
     if (!isLoggedIn) {
@@ -34,6 +46,17 @@ export default function RecipesDetails({ details }) {
       dispatch(removeFavorite({ recipe: details, userId: user?.id }));
     } else {
       dispatch(addFavorite({ recipe: details, userId: user?.id }));
+    }
+  };
+
+  const handleDeleteUserRecipe = () => {
+    if (
+      window.confirm(
+        `Are you sure you want to delete "${details.name}"? This action cannot be undone.`
+      )
+    ) {
+      dispatch(removeRecipe(details.id));
+      router.push("/recipes");
     }
   };
 
@@ -59,13 +82,20 @@ export default function RecipesDetails({ details }) {
     <div className={styles.container}>
       <div className={styles.hero}>
         <div className={styles.imageContainer}>
-          <Image
-            src={details.image}
-            alt={details.name}
-            className={styles.heroImage}
-            width={600}
-            height={600}
-          />
+          {details.image ? (
+            <Image
+              src={details.image}
+              alt={details.name}
+              className={styles.heroImage}
+              width={600}
+              height={600}
+            />
+          ) : (
+            <div className={styles.noImagePlaceholder}>
+              <ChefHat size={120} className={styles.placeholderIcon} />
+              <span className={styles.placeholderText}>No Image Available</span>
+            </div>
+          )}
         </div>
 
         <div className={styles.heroContent}>
@@ -79,21 +109,33 @@ export default function RecipesDetails({ details }) {
                 </span>
               ))}
             </div>
-            <button
-              className={`${styles.favoriteBtn} ${
-                isFavorite ? styles.favoriteActive : ""
-              }`}
-              onClick={handleFavoriteToggle}
-            >
-              <Heart
-                size={18}
-                className={styles.heartIcon}
-                fill={isFavorite ? "currentColor" : "none"}
-              />
-              <span className={styles.favoriteText}>
-                {isFavorite ? "Favorited" : "Favorite"}
-              </span>
-            </button>
+            <div className={styles.actionButtons}>
+              <button
+                className={`${styles.favoriteBtn} ${
+                  isFavorite ? styles.favoriteActive : ""
+                }`}
+                onClick={handleFavoriteToggle}
+              >
+                <Heart
+                  size={18}
+                  className={styles.heartIcon}
+                  fill={isFavorite ? "currentColor" : "none"}
+                />
+                <span className={styles.favoriteText}>
+                  {isFavorite ? "Favorited" : "Favorite"}
+                </span>
+              </button>
+
+              {isOwner && (
+                <button
+                  className={styles.deleteBtn}
+                  onClick={handleDeleteUserRecipe}
+                >
+                  <Trash2 size={18} />
+                  <span>Delete</span>
+                </button>
+              )}
+            </div>
           </div>
 
           <div className={styles.ratingSection}>
