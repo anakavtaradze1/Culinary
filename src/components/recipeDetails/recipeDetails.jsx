@@ -3,7 +3,11 @@ import { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useAppSelector, useAppDispatch } from "@/lib/hooks";
-import { addFavorite, removeFavorite } from "@/lib/slices/favoriteSlice";
+import {
+  addFavorite,
+  removeFavorite,
+  removeRecipeFromFavorites,
+} from "@/lib/slices/favoriteSlice";
 import { setPendingFavorite } from "@/lib/slices/authSlice";
 
 import {
@@ -56,6 +60,9 @@ export default function RecipesDetails({ details }) {
       )
     ) {
       dispatch(removeRecipe(details.id));
+      dispatch(
+        removeRecipeFromFavorites({ recipeId: details.id, userId: user?.id })
+      );
       router.push("/recipes");
     }
   };

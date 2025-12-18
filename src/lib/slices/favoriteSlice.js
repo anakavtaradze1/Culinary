@@ -40,11 +40,21 @@ export const favoriteSlice = createSlice({
     },
     removeFavorite: (state, action) => {
       const { recipe, userId } = action.payload || {};
-      if (!recipe || !recipe.id) {
-        console.error("Invalid recipe data in removeFavorite:", action.payload);
+
+      if (!recipe) {
         return;
       }
-      state.items = state.items.filter((item) => item.id !== recipe.id);
+
+      const recipeId = recipe.id;
+      if (!recipeId) {
+        const index = state.items.findIndex((item) => item === recipe);
+        if (index >= 0) {
+          state.items.splice(index, 1);
+        }
+      } else {
+        state.items = state.items.filter((item) => item.id !== recipeId);
+      }
+
       if (
         typeof window !== "undefined" &&
         typeof localStorage !== "undefined"
@@ -60,10 +70,35 @@ export const favoriteSlice = createSlice({
     loadFavorites: (state, action) => {
       state.items = action.payload;
     },
+    removeRecipeFromFavorites: (state, action) => {
+      const { recipeId, userId } = action.payload || {};
+
+      if (!recipeId) {
+        return;
+      }
+
+      state.items = state.items.filter((item) => item.id !== recipeId);
+
+      if (
+        typeof window !== "undefined" &&
+        typeof localStorage !== "undefined"
+      ) {
+        try {
+          const key = getUserFavoritesKey(userId);
+          localStorage.setItem(key, JSON.stringify(state.items));
+        } catch (error) {
+          console.error("Error saving to localStorage:", error);
+        }
+      }
+    },
   },
 });
 
-export const { addFavorite, removeFavorite, loadFavorites } =
-  favoriteSlice.actions;
+export const {
+  addFavorite,
+  removeFavorite,
+  loadFavorites,
+  removeRecipeFromFavorites,
+} = favoriteSlice.actions;
 export { getUserFavoritesKey };
 export default favoriteSlice.reducer;

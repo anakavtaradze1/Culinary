@@ -5,7 +5,11 @@ import Link from "next/link";
 import { Clock, ChefHat, Heart, Trash2 } from "lucide-react";
 import { FaStar } from "react-icons/fa";
 import { useAppSelector, useAppDispatch } from "@/lib/hooks";
-import { addFavorite, removeFavorite } from "@/lib/slices/favoriteSlice";
+import {
+  addFavorite,
+  removeFavorite,
+  removeRecipeFromFavorites,
+} from "@/lib/slices/favoriteSlice";
 import { setPendingFavorite } from "@/lib/slices/authSlice";
 import { removeRecipe } from "@/lib/slices/userRecipesSlice";
 
@@ -46,6 +50,9 @@ export default function RecipesItem({ recipe }) {
       )
     ) {
       dispatch(removeRecipe(recipe.id));
+      dispatch(
+        removeRecipeFromFavorites({ recipeId: recipe.id, userId: user?.id })
+      );
     }
   };
 

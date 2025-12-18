@@ -203,6 +203,16 @@ export default function MealPlanner() {
         </div>
       </div>
 
+      <div className={styles.nutritionHelper}>
+        <div className={styles.helpCard}>
+          <h3>Need Nutrition Guidance?</h3>
+          <p>Make your meal planning healthier with our comprehensive nutrition guide</p>
+          <a href="/nutrition" className={styles.nutritionLink}>
+            Learn About Nutrition →
+          </a>
+        </div>
+      </div>
+
       <div className={styles.planGrid}>
         {daysOfWeek.map((day) => (
           <div key={day} className={styles.dayColumn}>

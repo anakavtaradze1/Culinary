@@ -12,12 +12,38 @@ import styles from "./page.module.css";
 
 function FavoritesPage() {
   const dispatch = useAppDispatch();
-  const favoriteItems = useAppSelector((state) => state.favorites.items);
+  const allFavoriteItems = useAppSelector((state) => state.favorites.items);
   const user = useAppSelector((state) => state.auth.user);
+
+  const favoriteItems = allFavoriteItems.filter((recipe) => {
+    return (
+      recipe &&
+      recipe.id &&
+      recipe.name &&
+      typeof recipe.name === "string" &&
+      recipe.name.trim().length > 0
+    );
+  });
 
   useEffect(() => {
     document.title = "My Favorites - Culinary Delights";
   }, []);
+
+  useEffect(() => {
+    if (allFavoriteItems.length !== favoriteItems.length) {
+      allFavoriteItems.forEach((item) => {
+        if (
+          !item ||
+          !item.id ||
+          !item.name ||
+          typeof item.name !== "string" ||
+          item.name.trim().length === 0
+        ) {
+          dispatch(removeFavorite({ recipe: item, userId: user?.id }));
+        }
+      });
+    }
+  }, [allFavoriteItems, favoriteItems.length, dispatch, user?.id]);
 
   const handleRemoveFavorite = (recipe) => {
     dispatch(removeFavorite({ recipe, userId: user?.id }));
@@ -57,25 +83,30 @@ function FavoritesPage() {
         <div className={styles.recipesGrid}>
           {favoriteItems.map((recipe) => (
             <div key={recipe.id} className={styles.recipeCard}>
-              {recipe.image && (
-                <div className={styles.imageContainer}>
+              <div className={styles.imageContainer}>
+                {recipe.image ? (
                   <Image
                     src={recipe.image}
-                    alt={recipe.name}
+                    alt={recipe.name || "Recipe"}
                     width={400}
                     height={250}
                     className={styles.recipeImage}
                   />
-                  <button
-                    className={styles.removeBtn}
-                    onClick={() => handleRemoveFavorite(recipe)}
-                    aria-label="Remove from favorites"
-                    title="Remove from favorites"
-                  >
-                    <Trash2 size={18} />
-                  </button>
-                </div>
-              )}
+                ) : (
+                  <div className={styles.noImage}>
+                    <ChefHat size={48} className={styles.noImageIcon} />
+                    <span>No Image</span>
+                  </div>
+                )}
+                <button
+                  className={styles.removeBtn}
+                  onClick={() => handleRemoveFavorite(recipe)}
+                  aria-label="Remove from favorites"
+                  title="Remove from favorites"
+                >
+                  <Trash2 size={18} />
+                </button>
+              </div>
 
               <div className={styles.recipeContent}>
                 <Link href={`/recipes/${recipe.id}`}>

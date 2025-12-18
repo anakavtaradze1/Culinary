@@ -161,6 +161,98 @@ const About = () => {
           </div>
         </section>
 
+        <section className={styles.valuesSection}>
+          <div className={styles.valuesContent}>
+            <h2 className={styles.sectionTitle}>
+              Our <span className={styles.culinary}>Values</span>
+            </h2>
+
+            <div className={styles.valuesGrid}>
+              <div className={styles.valueCard}>
+                <Award className={styles.valueIcon} />
+                <h3>Quality First</h3>
+                <p>
+                  Every recipe is tested multiple times to ensure consistent,
+                  delicious results.
+                </p>
+              </div>
+
+              <div className={styles.valueCard}>
+                <Heart className={styles.valueIcon} />
+                <h3>Inclusivity</h3>
+                <p>
+                  We celebrate all dietary preferences and cultural traditions
+                  in cooking.
+                </p>
+              </div>
+
+              <div className={styles.valueCard}>
+                <Globe className={styles.valueIcon} />
+                <h3>Sustainability</h3>
+                <p>
+                  We promote sustainable cooking practices and seasonal
+                  ingredient usage.
+                </p>
+              </div>
+
+              <div className={styles.valueCard}>
+                <Users className={styles.valueIcon} />
+                <h3>Community</h3>
+                <p>
+                  Building connections through shared meals and culinary
+                  experiences.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className={styles.journeySection}>
+          <div className={styles.journeyContent}>
+            <h2 className={styles.sectionTitle}>
+              Our <span className={styles.culinary}>Journey</span>
+            </h2>
+
+            <div className={styles.timelineGrid}>
+              <div className={styles.timelineItem}>
+                <div className={styles.timelineYear}>2023</div>
+                <h4>The Beginning</h4>
+                <p>
+                  Started as a small collection of family recipes shared among
+                  friends.
+                </p>
+              </div>
+
+              <div className={styles.timelineItem}>
+                <div className={styles.timelineYear}>2024</div>
+                <h4>Community Growth</h4>
+                <p>
+                  Expanded to include international cuisines and
+                  dietary-specific recipes.
+                </p>
+              </div>
+
+              <div className={styles.timelineItem}>
+                <div className={styles.timelineYear}>2025</div>
+                <h4>Innovation</h4>
+                <p>
+                  Launched meal planning features and nutrition tracking
+                  capabilities.
+                </p>
+              </div>
+
+              <div className={styles.timelineItem}>
+                <div className={styles.timelineYear}>Today</div>
+                <h4>Global Impact</h4>
+                <p>
+                  Serving 10,000+ home cooks worldwide with 1,000+ tested
+                  recipes.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section className={styles.ctaSection}>
           <div className={styles.ctaContent}>
             <h2 className={styles.ctaTitle}>
@@ -170,9 +262,14 @@ const About = () => {
               Join thousands of home cooks who have already discovered their new
               favorite recipes with us.
             </p>
-            <Link href="/recipes" className={styles.ctaButton}>
-              Explore Recipes
-            </Link>
+            <div className={styles.ctaButtons}>
+              <Link href="/recipes" className={styles.ctaButton}>
+                Explore Recipes
+              </Link>
+              <Link href="/tips" className={styles.ctaButtonSecondary}>
+                Learn Techniques
+              </Link>
+            </div>
           </div>
         </section>
       </div>

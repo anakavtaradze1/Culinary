@@ -1,0 +1,462 @@
+.container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #dce0e8 100%);
+}
+.hero {
+  text-align: center;
+  padding: 50px 20px 60px;
+  color: white;
+  background: linear-gradient(
+    135deg,
+    rgba(102, 126, 234, 0.95) 0%,
+    rgba(118, 75, 162, 0.95) 100%
+  );
+}
+.heroIcon {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 20px;
+  color: #ffd700;
+}
+.title {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+.subtitle {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  opacity: 0.9;
+  max-width: 700px;
+  margin: 0 auto;
+}
+.content {
+  background: white;
+  border-radius: 30px 30px 0 0;
+}
+.section {
+  padding: 60px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.section:not(:last-child) {
+  border-bottom: 1px solid #f0f0f0;
+}
+.sectionTitle {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 40px;
+  color: #2d3748;
+  text-align: center;
+  justify-content: center;
+}
+.sectionIcon {
+  width: 40px;
+  height: 40px;
+  color: #667eea;
+}
+.macroGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+.macroCard {
+  background: white;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 2px solid transparent;
+}
+.macroCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+}
+.macroHeader {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid;
+  position: relative;
+}
+.macroIcon {
+  width: 35px;
+  height: 35px;
+}
+.macroHeader h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #2d3748;
+  flex: 1;
+}
+.percentage {
+  padding: 8px 16px;
+  border-radius: 20px;
+  color: white;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.macroDescription {
+  color: #4a5568;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+.sources strong {
+  color: #2d3748;
+  font-weight: 600;
+}
+.sources ul {
+  list-style: none;
+  padding: 10px 0 0 0;
+}
+.sources li {
+  padding: 5px 0;
+  padding-left: 20px;
+  position: relative;
+  color: #4a5568;
+}
+.sources li:before {
+  content: "•";
+  color: #667eea;
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+}
+.vitaminGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  margin-top: 40px;
+}
+.vitaminCard {
+  background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+  border-radius: 15px;
+  padding: 25px;
+  border-left: 5px solid #667eea;
+  transition: transform 0.3s ease;
+}
+.vitaminCard:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.1);
+}
+.vitaminHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+.vitaminHeader h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #2d3748;
+}
+.dailyValue {
+  background: #667eea;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+.benefit {
+  color: #4a5568;
+  font-style: italic;
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+.vitaminCard .sources {
+  color: #4a5568;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+.tipsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+  margin-top: 40px;
+}
+.tipCard {
+  background: white;
+  border-radius: 15px;
+  padding: 25px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+  border: 1px solid #e2e8f0;
+}
+.tipCard:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+.tipIcon {
+  width: 40px;
+  height: 40px;
+  color: #667eea;
+  margin-bottom: 15px;
+}
+.tipCard h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 15px;
+}
+.tipCard p {
+  color: #4a5568;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+.mealPlanningContent {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-top: 40px;
+}
+.planningTips h3,
+.plateGuide h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 25px;
+  text-align: center;
+}
+.checklistItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 0;
+  color: #4a5568;
+  line-height: 1.5;
+}
+.checkIcon {
+  width: 18px;
+  height: 18px;
+  color: #48bb78;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.plateVisual {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  position: relative;
+  margin: 20px auto;
+  overflow: hidden;
+  border: 4px solid #e2e8f0;
+}
+.plateSection {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+.plateSection[data-section="vegetables"] {
+  background: linear-gradient(45deg, #48bb78, #38a169);
+  width: 100%;
+  height: 50%;
+  top: 0;
+  left: 0;
+  border-radius: 125px 125px 0 0;
+}
+.plateSection[data-section="grains"] {
+  background: linear-gradient(45deg, #ed8936, #dd6b20);
+  width: 50%;
+  height: 50%;
+  bottom: 0;
+  left: 0;
+  border-radius: 0 0 0 125px;
+}
+.plateSection[data-section="protein"] {
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  width: 50%;
+  height: 50%;
+  bottom: 0;
+  right: 0;
+  border-radius: 0 0 125px 0;
+}
+.plateNote {
+  text-align: center;
+  color: #4a5568;
+  font-style: italic;
+  margin-top: 15px;
+  font-size: 0.9rem;
+}
+.hydrationFacts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+.hydrationFact {
+  background: linear-gradient(135deg, #e6fffa 0%, #a1d7ce 100%);
+  border-radius: 15px;
+  padding: 25px;
+  border-left: 5px solid #38b2ac;
+}
+.hydrationFact h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 15px;
+}
+.hydrationFact p,
+.hydrationFact li {
+  color: #4a5568;
+  line-height: 1.5;
+  margin-bottom: 8px;
+}
+.hydrationFact ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.hydrationFact li {
+  padding-left: 20px;
+  position: relative;
+}
+.hydrationFact li:before {
+  content: "💧";
+  position: absolute;
+  left: 0;
+}
+.ctaSection {
+  color: black;
+  text-align: center;
+  padding: 60px 20px;
+}
+.ctaContent {
+  max-width: 700px;
+  margin: 0 auto;
+}
+.ctaIcon {
+  width: 50px;
+  height: 50px;
+  color: #ffd700;
+  margin-bottom: 20px;
+}
+.ctaContent h2 {
+  font-size: 2.3rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+.ctaContent p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  opacity: 0.9;
+}
+.ctaButtons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.primaryBtn,
+.secondaryBtn {
+  padding: 15px 30px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.primaryBtn {
+  background: rgb(6, 87, 121);
+  color: white;
+  box-shadow: 0 8px 20px rgba(6, 87, 121, 0.3);
+}
+.primaryBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(6, 87, 121, 0.4);
+}
+.secondaryBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(6, 87, 121, 0.4);
+}
+.secondaryBtn {
+  background: rgb(6, 87, 121);
+  color: white;
+  box-shadow: 0 8px 20px rgba(6, 87, 121, 0.3);
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 2rem;
+  }
+  .subtitle {
+    font-size: 1rem;
+  }
+  .sectionTitle {
+    font-size: 1.6rem;
+    flex-direction: column;
+    text-align: center;
+  }
+  .macroGrid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .vitaminGrid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .tipsGrid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .mealPlanningContent {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .plateVisual {
+    width: 200px;
+    height: 200px;
+  }
+  .planningTips h3 {
+    font-size: 1.4rem;
+  }
+  .ctaButtons {
+    flex-direction: column;
+    align-items: center;
+  }
+  .hydrationFacts {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .ctaContent h2 {
+    font-size: 1.8rem;
+  }
+  .primaryBtn,
+  .secondaryBtn {
+    width: 100%;
+    justify-content: center;
+    padding: 10px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding: 30px 10px;
+  }
+
+  .hero {
+    padding: 60px 15px 40px;
+  }
+  .title {
+    font-size: 1.6rem;
+  }
+  .subtitle {
+    font-size: 0.9rem;
+  }
+}

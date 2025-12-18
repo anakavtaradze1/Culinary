@@ -306,6 +306,109 @@
 .pairingList strong {
   color: #fff;
 }
+.kitchenEssentialsSection {
+  margin: 60px 0;
+  padding: 25px 0;
+  background: linear-gradient(135deg, #f8fafc 0%, #edf2f7 100%);
+  border-radius: 20px;
+}
+.essentialsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  padding: 20px;
+}
+.essentialCategory {
+  background: white;
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border-left: 4px solid #4d62be;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.essentialCategory:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+.essentialCategory h3 {
+  color: #2d3748;
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #e2e8f0;
+}
+.essentialList {
+  list-style: none;
+}
+.essentialList li {
+  padding: 8px 0;
+  padding-left: 25px;
+  position: relative;
+  color: #4a5568;
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+.essentialList li:before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #48bb78;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+.seasonalTipsSection {
+  margin: 40px 0;
+}
+.seasonalGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  margin-top: 30px;
+}
+.seasonCard {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 15px;
+  padding: 25px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+.seasonCard:hover {
+  transform: translateY(-5px);
+}
+.seasonCard h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #f6f5f3;
+}
+.seasonCard p {
+  font-size: 1rem;
+  margin-bottom: 20px;
+  opacity: 0.9;
+  font-style: italic;
+}
+.seasonCard ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+}
+.seasonCard li {
+  padding: 6px 0;
+  padding-left: 20px;
+  position: relative;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+.seasonCard li:before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #ffd700;
+  font-weight: bold;
+}
 
 @media (max-width: 768px) {
   .title {
@@ -472,5 +575,18 @@
     padding: 6px 0;
     font-size: 0.85rem;
     line-height: 1.3;
+  }
+  .essentialsGrid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 15px;
+  }
+  .seasonalGrid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .essentialCategory,
+  .seasonCard {
+    padding: 10px 15px;
   }
 }

@@ -195,6 +195,110 @@ export default function Tips() {
           </div>
         </div>
 
+        <div className={styles.kitchenEssentialsSection}>
+          <h2 className={styles.sectionTitle}>Kitchen Essentials Guide</h2>
+          <div className={styles.essentialsGrid}>
+            <div className={styles.essentialCategory}>
+              <h3>Must-Have Knives</h3>
+              <ul className={styles.essentialList}>
+                <li>8-10 inch chef&apos;s knife - your most important tool</li>
+                <li>Paring knife for detail work</li>
+                <li>Serrated bread knife</li>
+                <li>Utility knife for medium tasks</li>
+              </ul>
+            </div>
+            <div className={styles.essentialCategory}>
+              <h3>Essential Cookware</h3>
+              <ul className={styles.essentialList}>
+                <li>Non-stick frying pan (10-12 inch)</li>
+                <li>Cast iron skillet for searing</li>
+                <li>Heavy-bottomed saucepan with lid</li>
+                <li>Large stockpot for soups & pasta</li>
+                <li>Baking sheet pans</li>
+              </ul>
+            </div>
+            <div className={styles.essentialCategory}>
+              <h3>Basic Tools</h3>
+              <ul className={styles.essentialList}>
+                <li>Wooden spoons & spatulas</li>
+                <li>Tongs for turning food</li>
+                <li>Whisk for mixing & emulsions</li>
+                <li>Can opener & bottle opener</li>
+                <li>Digital kitchen scale</li>
+                <li>Instant-read thermometer</li>
+              </ul>
+            </div>
+            <div className={styles.essentialCategory}>
+              <h3>Pantry Staples</h3>
+              <ul className={styles.essentialList}>
+                <li>Extra virgin olive oil & neutral oil</li>
+                <li>Sea salt & black pepper</li>
+                <li>Garlic & onions</li>
+                <li>Dried herbs: oregano, thyme, basil</li>
+                <li>Vinegar: balsamic & apple cider</li>
+                <li>Quality stock/broth</li>
+              </ul>
+            </div>
+            <div className={styles.essentialCategory}>
+              <h3>Storage & Organization</h3>
+              <ul className={styles.essentialList}>
+                <li>Glass food storage containers</li>
+                <li>Airtight canisters for dry goods</li>
+                <li>Cutting board (separate for meat & vegetables)</li>
+                <li>Kitchen towels & paper towels</li>
+                <li>Aluminum foil & plastic wrap</li>
+                <li>Labels for dating leftovers</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div className={styles.seasonalTipsSection}>
+          <h2 className={styles.sectionTitle}>Seasonal Cooking Tips</h2>
+          <div className={styles.seasonalGrid}>
+            <div className={styles.seasonCard}>
+              <h3>Spring</h3>
+              <p>Focus on fresh, light flavors</p>
+              <ul>
+                <li>Use tender spring vegetables</li>
+                <li>Incorporate fresh herbs</li>
+                <li>Try lighter cooking methods</li>
+                <li>Make use of citrus zest</li>
+              </ul>
+            </div>
+            <div className={styles.seasonCard}>
+              <h3>Summer</h3>
+              <p>Embrace no-cook & grilling</p>
+              <ul>
+                <li>Grill outdoors when possible</li>
+                <li>Make fresh salsas & salads</li>
+                <li>Use peak-season fruits</li>
+                <li>Keep cooking times short</li>
+              </ul>
+            </div>
+            <div className={styles.seasonCard}>
+              <h3>Fall</h3>
+              <p>Warm, comforting dishes</p>
+              <ul>
+                <li>Roast root vegetables</li>
+                <li>Use warming spices</li>
+                <li>Make hearty stews & soups</li>
+                <li>Preserve summer&apos;s bounty</li>
+              </ul>
+            </div>
+            <div className={styles.seasonCard}>
+              <h3>Winter</h3>
+              <p>Rich, nourishing meals</p>
+              <ul>
+                <li>Slow-cook tough cuts</li>
+                <li>Use dried beans & grains</li>
+                <li>Make warming beverages</li>
+                <li>Focus on citrus fruits</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
         <div className={styles.quickTipsSection}>
           <h2 className={styles.sectionTitle}>Quick Tips for Success</h2>
           <div className={styles.quickTips}>
