@@ -17,7 +17,7 @@
 
 ### 🏠 **Home Dashboard** - `/`
 
-![Home Page](src/app/assets/screencapture-localhost-3000-2025-12-19-13_12_37.png)
+<img src="src/app/assets/screencapture-localhost-3000-2025-12-19-13_12_37.png" alt="Home Page" width="400" height="300">
 
 - **Featured Recipes**: Discover trending and popular recipes
 - **Quick Navigation**: Easy access to all platform features
@@ -30,7 +30,7 @@
 
 ### 📚 **Recipe Collection** - `/recipes`
 
-![Recipes Page](src/app/assets/screencapture-localhost-3000-recipes-2025-12-19-13_15_00.png)
+<img src="src/app/assets/screencapture-localhost-3000-recipes-2025-12-19-13_15_00.png" alt="Recipes Page" width="400" height="300">
 
 - **Recipe Database**: Browse recipes from DummyJSON API
 - **Recipe Cards**: View recipes with images, titles, ratings and cooking times
@@ -42,7 +42,7 @@
 
 #### **Recipe Details** - `/recipes/[id]`
 
-![Recipe Details](src/app/assets/screencapture-localhost-3000-recipes-3-2025-12-19-13_13_29.png)
+<img src="src/app/assets/screencapture-localhost-3000-recipes-3-2025-12-19-13_13_29.png" alt="Recipe Details" width="400" height="300">
 
 - **Complete Recipe Info**: Ingredients list, step-by-step instructions and nutritional data
 - **Recipe Details**: Prep time, cook time, servings, difficulty level and cuisine
@@ -52,7 +52,7 @@
 
 ### ❤️ **Favorites** - `/favorites` 🔒 _Protected Route_
 
-![Favorites Page](src/app/assets/screencapture-localhost-3000-favorites-2025-12-19-13_20_36.png)
+<img src="src/app/assets/screencapture-localhost-3000-favorites-2025-12-19-13_20_36.png" alt="Favorites Page" width="400" height="300">
 
 - **Personal Recipe Collection**: View all your bookmarked recipes
 - **Recipe Grid Layout**: Visual cards showing recipe images, names and details
@@ -66,7 +66,7 @@
 
 ### 📅 **Meal Planner** - `/meal-planner` 🔒 _Protected Route_
 
-![Meal Planner](src/app/assets/screencapture-localhost-3000-meal-planner-2025-12-19-13_16_36.png)
+<img src="src/app/assets/screencapture-localhost-3000-meal-planner-2025-12-19-13_16_36.png" alt="Meal Planner" width="400" height="300">
 
 - **Weekly Calendar View**: Plan meals for breakfast, lunch, and dinner across 7 days
 - **Week Navigation**: Navigate between different weeks with arrow buttons
@@ -80,7 +80,7 @@
 
 ### 🍎 **Nutrition Tracker** - `/nutrition`
 
-![Nutrition Page](src/app/assets/screencapture-localhost-3000-nutrition-2025-12-19-13_16_46.png)
+<img src="src/app/assets/screencapture-localhost-3000-nutrition-2025-12-19-13_16_46.png" alt="Nutrition Page" width="400" height="300">
 
 - **Comprehensive Tracking**: Monitor daily and weekly nutritional intake
 - **Nutritional Analysis**: Detailed breakdown of calories, macros and micronutrients
@@ -91,7 +91,7 @@
 
 ### 💡 **Cooking Tips** - `/tips`
 
-![Tips Page](src/app/assets/screencapture-localhost-3000-tips-2025-12-19-13_28_14.png)
+<img src="src/app/assets/screencapture-localhost-3000-tips-2025-12-19-13_28_14.png" alt="Tips Page" width="400" height="300">
 
 - **Kitchen Skills**: Essential knife skills, proper cutting techniques and safety tips
 - **Cooking Techniques**: Heat control, seasoning layers and cooking methods
@@ -103,7 +103,7 @@
 
 ### 📖 **About & Community** - `/about`
 
-![About Page](src/app/assets/screencapture-localhost-3000-about-2025-12-19-13_25_10.png)
+<img src="src/app/assets/screencapture-localhost-3000-about-2025-12-19-13_25_10.png" alt="About Page" width="400" height="300">
 
 - **Platform Story**: Learn about the mission and vision of Culinary Delights
 - **Team Information**: Meet the developers and culinary experts behind the platform
@@ -121,7 +121,7 @@
 
 ### 📞 **Contact** - `/contact`
 
-![Contact Page](src/app/assets/screencapture-localhost-3000-contact-2025-12-19-13_25_21.png)
+<img src="src/app/assets/screencapture-localhost-3000-contact-2025-12-19-13_25_21.png" alt="Contact Page" width="400" height="300">
 
 - **Contact Form**: Get in touch with us using the contact form
 - **Multiple Contact Methods**: Various ways to reach our support team
