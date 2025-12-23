@@ -171,92 +171,102 @@ export default function MealPlanner() {
 
   return (
     <div className={styles.mealPlanner}>
-      <div className={styles.header}>
-        <h1 className={styles.title}>Weekly Meal Planner</h1>
-        <p className={styles.subtitle}>
-          Plan your meals for the week and stay organized
-        </p>
-      </div>
-
-      <div className={styles.weekNavigation}>
-        <div className={styles.weekSelector}>
-          <button
-            className={styles.weekButton}
-            onClick={() => navigateWeek(-1)}
-          >
-            <ChevronLeft size={18} />
-            Previous Week
-          </button>
-          <span className={styles.currentWeekText}>
-            {formatWeekDisplay(currentWeekStart)}
-          </span>
-          <button className={styles.weekButton} onClick={() => navigateWeek(1)}>
-            Next Week
-            <ChevronRight size={18} />
-          </button>
+      <div className={styles.container}>
+        <div className={styles.header}>
+          <h1 className={styles.title}>Weekly Meal Planner</h1>
+          <p className={styles.subtitle}>
+            Plan your meals for the week and stay organized
+          </p>
         </div>
-        <div className={styles.actionButtons}>
-          <button className={styles.clearButton} onClick={handleClearWeek}>
-            <Trash2 size={18} />
-            Clear Week
-          </button>
-        </div>
-      </div>
 
-      <div className={styles.nutritionHelper}>
-        <div className={styles.helpCard}>
-          <h3>Need Nutrition Guidance?</h3>
-          <p>Make your meal planning healthier with our comprehensive nutrition guide</p>
-          <a href="/nutrition" className={styles.nutritionLink}>
-            Learn About Nutrition →
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.planGrid}>
-        {daysOfWeek.map((day) => (
-          <div key={day} className={styles.dayColumn}>
-            <div className={styles.dayHeader}>{day}</div>
-            {mealTypes.map((mealType) => {
-              const meal = weeklyPlan[day]?.[mealType];
-              return (
-                <div
-                  key={`${day}-${mealType}`}
-                  className={`${styles.mealSlot} ${meal ? styles.filled : ""}`}
-                  onClick={() => !meal && handleAddMeal(day, mealType)}
-                >
-                  <div className={styles.mealType}>{mealType}</div>
-                  {meal ? (
-                    <div className={styles.mealCard}>
-                      <div className={styles.mealName}>{meal.name}</div>
-                      <div className={styles.mealInfo}>
-                        <span>
-                          <Clock size={12} /> {meal.prepTimeMinutes}min
-                        </span>
-                        <span>
-                          <Star size={12} /> {meal.rating}
-                        </span>
-                      </div>
-                      <button
-                        className={styles.removeButton}
-                        onClick={(e) => handleRemoveMeal(day, mealType, e)}
-                      >
-                        <X size={12} />
-                        Remove
-                      </button>
-                    </div>
-                  ) : (
-                    <div className={styles.addMealText}>
-                      <Plus size={16} />
-                      <br />
-                      Add {mealType}
-                    </div>
-                  )}
-                </div>
-              );
-            })}
+        <div className={styles.weekNavigation}>
+          <div className={styles.weekSelector}>
+            <button
+              className={styles.weekButton}
+              onClick={() => navigateWeek(-1)}
+            >
+              <ChevronLeft size={18} />
+              Previous Week
+            </button>
+            <span className={styles.currentWeekText}>
+              {formatWeekDisplay(currentWeekStart)}
+            </span>
+            <button
+              className={styles.weekButton}
+              onClick={() => navigateWeek(1)}
+            >
+              Next Week
+              <ChevronRight size={18} />
+            </button>
           </div>
-        ))}
+          <div className={styles.actionButtons}>
+            <button className={styles.clearButton} onClick={handleClearWeek}>
+              <Trash2 size={18} />
+              Clear Week
+            </button>
+          </div>
+        </div>
+
+        <div className={styles.nutritionHelper}>
+          <div className={styles.helpCard}>
+            <h3>Need Nutrition Guidance?</h3>
+            <p>
+              Make your meal planning healthier with our comprehensive nutrition
+              guide
+            </p>
+            <a href="/nutrition" className={styles.nutritionLink}>
+              Learn About Nutrition →
+            </a>
+          </div>
+        </div>
+
+        <div className={styles.planGrid}>
+          {daysOfWeek.map((day) => (
+            <div key={day} className={styles.dayColumn}>
+              <div className={styles.dayHeader}>{day}</div>
+              {mealTypes.map((mealType) => {
+                const meal = weeklyPlan[day]?.[mealType];
+                return (
+                  <div
+                    key={`${day}-${mealType}`}
+                    className={`${styles.mealSlot} ${
+                      meal ? styles.filled : ""
+                    }`}
+                    onClick={() => !meal && handleAddMeal(day, mealType)}
+                  >
+                    <div className={styles.mealType}>{mealType}</div>
+                    {meal ? (
+                      <div className={styles.mealCard}>
+                        <div className={styles.mealName}>{meal.name}</div>
+                        <div className={styles.mealInfo}>
+                          <span>
+                            <Clock size={12} /> {meal.prepTimeMinutes}min
+                          </span>
+                          <span>
+                            <Star size={12} /> {meal.rating}
+                          </span>
+                        </div>
+                        <button
+                          className={styles.removeButton}
+                          onClick={(e) => handleRemoveMeal(day, mealType, e)}
+                        >
+                          <X size={12} />
+                          Remove
+                        </button>
+                      </div>
+                    ) : (
+                      <div className={styles.addMealText}>
+                        <Plus size={16} />
+                        <br />
+                        Add {mealType}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          ))}
+        </div>
       </div>
 
       {showRecipeModal && (

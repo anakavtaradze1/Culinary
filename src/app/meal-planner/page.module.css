@@ -1,5 +1,9 @@
 .mealPlanner {
+  background: linear-gradient(135deg, #f5f7fa 0%, #dce0e8 100%);
+  min-height: 100vh;
   padding: 3rem 1rem;
+}
+.container {
   max-width: 1200px;
   margin: 0 auto;
 }
